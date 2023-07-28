@@ -2,7 +2,6 @@
 import { BlogModel } from "../../Blog/TsModels/Blog_TsModel";
 import { blogSelectAllPaged } from "../DTOs/blogSelectAllPaged";
 import * as $ from "jquery";
-import { format } from "timeago.js";
 var numeral = require('numeral');
 
 //Set default values
@@ -88,7 +87,7 @@ class BlogQuery {
                                     Matias Novillo - Full Stack Web Developer
                                 </span>
                                 <div class="meta">
-                                    ${format(Date.parse(row.DateTimeLastModification))} -
+                                    ${Date.parse(row.DateTimeLastModification)} -
                                     ${numeral(row.NumberOfLikes).format('0,0.')} likes -
                                     ${numeral(row.NumberOfComments).format('0,0.')} comments
                                 </div>
@@ -131,7 +130,7 @@ class BlogQuery {
                                     Matias Novillo - Full Stack Web Developer
                                 </span>
                                 <div class="meta">
-                                    ${format(Date.parse(row.DateTimeLastModification))} -
+                                    ${Date.parse(row.DateTimeLastModification)} -
                                     ${numeral(row.NumberOfLikes).format('0,0.')} likes -
                                     ${numeral(row.NumberOfComments).format('0,0.')} comments
                                 </div>
