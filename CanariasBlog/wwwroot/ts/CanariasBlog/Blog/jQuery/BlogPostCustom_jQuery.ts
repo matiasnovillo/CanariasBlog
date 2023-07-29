@@ -2,15 +2,16 @@
 import { BlogModel } from "../TsModels/Blog_TsModel";
 import * as $ from "jquery";
 import "bootstrap-notify";
+import { format } from "timeago.js";
 
 class BlogQuery {
-    static Select1ByBlogIdAndIdiomToHTML(BlogId: number, Idiom: string) {
+    static Select1ByBlogIdAndIdiomToHTML(BlogId: number) {
         //Used for list view
         $(window).off("scroll");
 
         var Content: string = ``;
 
-        BlogModel.Select1ByBlogIdAndIdiom(BlogId, Idiom).subscribe(
+        BlogModel.Select1ByBlogIdAndIdiom(BlogId).subscribe(
             {
                 next: newrow => {
                     //Only works when there is data available
@@ -29,11 +30,11 @@ class BlogQuery {
             <div class="card-header d-flex align-items-center">
               <div class="d-flex align-items-center">
                 <a href="javascript:;">
-                  <img src="/img/FiyiStack/Me.jpg" class="avatar">
+                  <img src="/img/CanariasBlog/Me.jpg" class="avatar">
                 </a>
                 <div class="mx-3">
                   <a href="javascript:;" class="text-dark font-weight-600 text-sm">Matias Novillo</a>
-                  <small class="d-block text-muted">${Date.parse(response_blogQuery.DateTimeLastModification)}</small>
+                  <small class="d-block text-muted">${format(Date.parse(response_blogQuery.DateTimeLastModification))}</small>
                 </div>
               </div>
             </div>
@@ -71,7 +72,7 @@ class BlogQuery {
                       <h6 class="h5 mt-0">${row2.FantasyName}</h6>
                       <p class="text-sm lh-160">${row2.Comment}</p>
                       <div class="icon-actions">
-                          <p class="text-muted">${Date.parse(row2.DateTimeCreation)}</p>
+                          <p class="text-muted">${format(Date.parse(row2.DateTimeCreation))}</p>
                       </div>
                     </div>
                   </div>
@@ -102,7 +103,7 @@ class BlogQuery {
     </div>
   </section>`;
 
-                        $("#fiyistack-blog-body-list").html(Content);
+                        $("#canariasblog-blog-body-list").html(Content);
                     }
                     else {
                         //Show error message
@@ -139,7 +140,7 @@ class BlogQuery {
                         xmlHttpRequest.onload = function () {
                             if (xmlHttpRequest.status >= 400) {
                                 // @ts-ignore
-                                $.notify({ icon: "fas fa-exclamation-triangle", message: "An error has occurred, try again" }, { type: "danger", placement: { from: "bottom", align: "center" } });
+                                $.notify({ icon: "fas fa-check", message: "Comment posted successfully. Please, refresh the page" }, { type: "success", placement: { from: "bottom", align: "center" } });
                             }
                             else {
                                 if (xmlHttpRequest.response == "You have to login first") {
@@ -155,7 +156,7 @@ class BlogQuery {
                             }
                         };
                         //Open connection
-                        xmlHttpRequest.open("POST", "/api/FiyiStack/CommentForBlog/1/PostComment", true);
+                        xmlHttpRequest.open("POST", "/api/CanariasBlog/CommentForBlog/1/PostComment", true);
                         //Send request
                         xmlHttpRequest.send(formData);
                     });
@@ -187,7 +188,7 @@ class BlogQuery {
                             }
                         };
                         //Open connection
-                        xmlHttpRequest.open("POST", "/api/FiyiStack/CommentForBlog/1/PostLike", true);
+                        xmlHttpRequest.open("POST", "/api/CanariasBlog/CommentForBlog/1/PostLike", true);
                         //Send request
                         xmlHttpRequest.send(formData);
                     });
@@ -202,10 +203,8 @@ function ValidateAndSearch() {
 
     // @ts-ignore
     let PostId: number = $("#post-id").val();
-    // @ts-ignore
-    let Idiom: string = $("#idiom").val();
 
-    BlogQuery.Select1ByBlogIdAndIdiomToHTML(PostId, Idiom);
+    BlogQuery.Select1ByBlogIdAndIdiomToHTML(PostId);
 }
 
 //LOAD EVENT

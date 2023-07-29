@@ -5,6 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\Uploads\Examples\**" />
+    <Compile Remove="wwwroot\Uploads\Requirement\**" />
+    <Content Remove="wwwroot\Uploads\Examples\**" />
+    <Content Remove="wwwroot\Uploads\Requirement\**" />
+    <EmbeddedResource Remove="wwwroot\Uploads\Examples\**" />
+    <EmbeddedResource Remove="wwwroot\Uploads\Requirement\**" />
+    <None Remove="wwwroot\Uploads\Examples\**" />
+    <None Remove="wwwroot\Uploads\Requirement\**" />
+    <TypeScriptCompile Remove="wwwroot\Uploads\Examples\**" />
+    <TypeScriptCompile Remove="wwwroot\Uploads\Requirement\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <TypeScriptCompile Remove="wwwroot\ts\Examples\Example\jQuery\ExampleNonQuery_jQuery.ts" />
   </ItemGroup>
 
@@ -32,8 +45,7 @@
     <Folder Include="wwwroot\ExcelFiles\" />
     <Folder Include="wwwroot\icons\" />
     <Folder Include="wwwroot\PDFFiles\" />
-    <Folder Include="wwwroot\Uploads\Examples\Example\" />
-    <Folder Include="wwwroot\Uploads\Requirement\RequirementFile\" />
+    <Folder Include="wwwroot\Uploads\" />
   </ItemGroup>
 
 </Project>

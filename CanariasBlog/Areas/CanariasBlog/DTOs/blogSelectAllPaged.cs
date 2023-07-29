@@ -16,7 +16,7 @@ namespace CanariasBlog.Areas.FiyiStack.DTOs
 {
 
     /// <summary>
-    /// Virtual model used for [dbo].[FiyiStack.Blog.SelectAllPaged] stored procedure
+    /// Virtual model used for [dbo].[CanariasBlog.Blog.SelectAllPaged] stored procedure
     /// </summary>
     public partial class blogSelectAllPaged
     {
@@ -27,7 +27,6 @@ namespace CanariasBlog.Areas.FiyiStack.DTOs
         public bool SortToggler { get; set; }
         public int TotalRows { get; set; }
         public int TotalPages { get; set; }
-        public string Idiom { get; set; }
         public List<BlogModel> lstBlogModel { get; set; }
     }
 }

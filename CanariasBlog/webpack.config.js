@@ -92,7 +92,17 @@
          rolemenutsmodel: ["./wwwroot/ts/CMSCore/RoleMenu/TsModels/RoleMenu_TsModel"],
          rolemenujquery: ["./wwwroot/ts/CMSCore/RoleMenu/jQuery/RoleMenuQuery_jQuery"],
          rolemenuselectallpaged: ["./wwwroot/ts/CMSCore/RoleMenu/DTOs/rolemenuSelectAllPaged"],
-         pagepermissions: ["./wwwroot/ts/CMSCore/PagePermissions"]
+         pagepermissions: ["./wwwroot/ts/CMSCore/PagePermissions"],
+
+         //Area: CanariasBlog
+         blogtsmodel: ["./wwwroot/ts/CanariasBlog/Blog/TsModels/Blog_TsModel"],  //Area: FiyiStack
+         blogjquery: ["./wwwroot/ts/CanariasBlog/Blog/jQuery/BlogQuery_jQuery"],
+         blogcustomjquery: ["./wwwroot/ts/CanariasBlog/Blog/jQuery/BlogQueryCustom_jQuery"],
+         blogpostcustomjquery: ["./wwwroot/ts/CanariasBlog/Blog/jQuery/BlogPostCustom_jQuery"],
+         blogselectallpaged: ["./wwwroot/ts/CanariasBlog/Blog/DTOs/blogSelectAllPaged"],
+         commentforblogtsmodel: ["./wwwroot/ts/CanariasBlog/CommentForBlog/TsModels/CommentForBlog_TsModel"],
+         commentforblogjquery: ["./wwwroot/ts/CanariasBlog/CommentForBlog/jQuery/CommentForBlogQuery_jQuery"],
+         commentforblogselectallpaged: ["./wwwroot/ts/CanariasBlog/CommentForBlog/DTOs/commentforblogSelectAllPaged"]
 
          
      },

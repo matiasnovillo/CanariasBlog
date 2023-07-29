@@ -19,15 +19,15 @@ var CommentForBlogModel = /** @class */ (function () {
     }
     //Queries
     CommentForBlogModel.Select1ByCommentForBlogId = function (CommentForBlogId) {
-        var URL = "/api/FiyiStack/CommentForBlog/1/Select1ByCommentForBlogIdToJSON/" + CommentForBlogId;
+        var URL = "/api/CanariasBlog/CommentForBlog/1/Select1ByCommentForBlogIdToJSON/" + CommentForBlogId;
         return Rx.from((0, ajax_1.ajax)(URL));
     };
     CommentForBlogModel.SelectAll = function () {
-        var URL = "/api/FiyiStack/CommentForBlog/1/SelectAllToJSON";
+        var URL = "/api/CanariasBlog/CommentForBlog/1/SelectAllToJSON";
         return Rx.from((0, ajax_1.ajax)(URL));
     };
     CommentForBlogModel.SelectAllPaged = function (commentforblogSelectAllPaged) {
-        var URL = "/api/FiyiStack/CommentForBlog/1/SelectAllPagedToJSON";
+        var URL = "/api/CanariasBlog/CommentForBlog/1/SelectAllPagedToJSON";
         var Body = {
             QueryString: commentforblogSelectAllPaged.QueryString,
             ActualPageNumber: commentforblogSelectAllPaged.ActualPageNumber,
@@ -46,7 +46,7 @@ var CommentForBlogModel = /** @class */ (function () {
     };
     //Non-Queries
     CommentForBlogModel.DeleteByCommentForBlogId = function (CommentForBlogId) {
-        var URL = "/api/FiyiStack/CommentForBlog/1/DeleteByCommentForBlogId/" + CommentForBlogId;
+        var URL = "/api/CanariasBlog/CommentForBlog/1/DeleteByCommentForBlogId/" + CommentForBlogId;
         var Header = {
             "Accept": "application/json",
             "Content-Type": "application/json; charset=utf-8"
@@ -54,7 +54,7 @@ var CommentForBlogModel = /** @class */ (function () {
         return Rx.from(ajax_1.ajax.delete(URL, Header));
     };
     CommentForBlogModel.DeleteManyOrAll = function (DeleteType, Body) {
-        var URL = "/api/FiyiStack/CommentForBlog/1/DeleteManyOrAll/" + DeleteType;
+        var URL = "/api/CanariasBlog/CommentForBlog/1/DeleteManyOrAll/" + DeleteType;
         var Header = {
             "Accept": "application/json",
             "Content-Type": "application/json; charset=utf-8"
@@ -62,7 +62,7 @@ var CommentForBlogModel = /** @class */ (function () {
         return Rx.from(ajax_1.ajax.post(URL, Body, Header));
     };
     CommentForBlogModel.CopyByCommentForBlogId = function (CommentForBlogId) {
-        var URL = "/api/FiyiStack/CommentForBlog/1/CopyByCommentForBlogId/" + CommentForBlogId;
+        var URL = "/api/CanariasBlog/CommentForBlog/1/CopyByCommentForBlogId/" + CommentForBlogId;
         var Header = {
             "Accept": "application/json",
             "Content-Type": "application/json; charset=utf-8"

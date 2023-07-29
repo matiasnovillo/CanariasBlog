@@ -44,9 +44,9 @@ namespace CanariasBlog.Areas.FiyiStack.Services
         }
 
         #region Queries
-        public BlogModel Select1ByBlogIdAndIdiomToModel(int BlogId, string Idiom)
+        public BlogModel Select1ByBlogIdToModel(int BlogId)
         {
-            return new BlogModel().Select1ByBlogIdAndIdiomToModel(BlogId, Idiom);
+            return new BlogModel().Select1ByBlogIdToModel(BlogId);
         }
 
         public List<BlogModel> SelectAllToList()
@@ -244,7 +244,7 @@ namespace CanariasBlog.Areas.FiyiStack.Services
 <font face=""'Source Sans Pro', sans-serif"" color=""#868686"" style=""font-size: 17px; line-height: 20px;"">
     <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #868686; font-size: 17px; line-height: 20px;"">Printed on: {Now}</span>
 </font>
-").SaveAs($@"wwwroot/PDFFiles/FiyiStack/Blog/Blog_{Now.ToString("yyyy_MM_dd_HH_mm_ss_fff")}.pdf");
+").SaveAs($@"wwwroot/PDFFiles/CanariasBlog/Blog/Blog_{Now.ToString("yyyy_MM_dd_HH_mm_ss_fff")}.pdf");
 
             return Now;
         }

@@ -34,17 +34,17 @@ export class CommentForBlogModel {
 
     //Queries
     static Select1ByCommentForBlogId(CommentForBlogId: number) {
-        let URL = "/api/FiyiStack/CommentForBlog/1/Select1ByCommentForBlogIdToJSON/" + CommentForBlogId;
+        let URL = "/api/CanariasBlog/CommentForBlog/1/Select1ByCommentForBlogIdToJSON/" + CommentForBlogId;
         return Rx.from(ajax(URL));
     }
 
     static SelectAll() {
-        let URL = "/api/FiyiStack/CommentForBlog/1/SelectAllToJSON"
+        let URL = "/api/CanariasBlog/CommentForBlog/1/SelectAllToJSON"
         return Rx.from(ajax(URL));
     }
     
     static SelectAllPaged(commentforblogSelectAllPaged: commentforblogSelectAllPaged) {
-        let URL = "/api/FiyiStack/CommentForBlog/1/SelectAllPagedToJSON";
+        let URL = "/api/CanariasBlog/CommentForBlog/1/SelectAllPagedToJSON";
         let Body = {
             QueryString: commentforblogSelectAllPaged.QueryString,
             ActualPageNumber: commentforblogSelectAllPaged.ActualPageNumber,
@@ -64,7 +64,7 @@ export class CommentForBlogModel {
 
     //Non-Queries
     static DeleteByCommentForBlogId(CommentForBlogId: number | string | string[] | undefined) {
-        let URL = "/api/FiyiStack/CommentForBlog/1/DeleteByCommentForBlogId/" + CommentForBlogId;
+        let URL = "/api/CanariasBlog/CommentForBlog/1/DeleteByCommentForBlogId/" + CommentForBlogId;
         let Header: any = {
             "Accept": "application/json",
             "Content-Type": "application/json; charset=utf-8"
@@ -73,7 +73,7 @@ export class CommentForBlogModel {
     }
 
     static DeleteManyOrAll(DeleteType: string, Body: Ajax) {
-        let URL = "/api/FiyiStack/CommentForBlog/1/DeleteManyOrAll/" + DeleteType;
+        let URL = "/api/CanariasBlog/CommentForBlog/1/DeleteManyOrAll/" + DeleteType;
         let Header: any = {
             "Accept": "application/json",
             "Content-Type": "application/json; charset=utf-8"
@@ -82,7 +82,7 @@ export class CommentForBlogModel {
     }
     
     static CopyByCommentForBlogId(CommentForBlogId: string | number | string[] | undefined) {
-        let URL = "/api/FiyiStack/CommentForBlog/1/CopyByCommentForBlogId/" + CommentForBlogId;
+        let URL = "/api/CanariasBlog/CommentForBlog/1/CopyByCommentForBlogId/" + CommentForBlogId;
         let Header: any = {
             "Accept": "application/json",
             "Content-Type": "application/json; charset=utf-8"

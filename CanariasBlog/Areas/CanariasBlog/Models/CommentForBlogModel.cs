@@ -35,7 +35,7 @@ namespace CanariasBlog.Areas.FiyiStack.Models
     public partial class CommentForBlogModel
     {
         [NotMapped]
-        private string _ConnectionString = ConnectionStrings.ConnectionStrings.Production();
+        private string _ConnectionString = ConnectionStrings.ConnectionStrings.Development();
 
         #region Fields
         [Library.ModelAttributeValidator.Key("CommentForBlogId")]
@@ -132,12 +132,12 @@ namespace CanariasBlog.Areas.FiyiStack.Models
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
                     //In case of not finding anything, Dapper return a List<CommentForBlogModel>
-                    lstCommentForBlogModel = (List<CommentForBlogModel>)sqlConnection.Query<CommentForBlogModel>("[dbo].[FiyiStack.CommentForBlog.Select1ByCommentForBlogId]", dp, commandType: CommandType.StoredProcedure);
+                    lstCommentForBlogModel = (List<CommentForBlogModel>)sqlConnection.Query<CommentForBlogModel>("[dbo].[CanariasBlog.CommentForBlog.Select1ByCommentForBlogId]", dp, commandType: CommandType.StoredProcedure);
                 }
 
                 if (lstCommentForBlogModel.Count > 1)
                 {
-                    throw new Exception("The stored procedure [dbo].[FiyiStack.CommentForBlog.Select1ByCommentForBlogId] returned more than one register/row");
+                    throw new Exception("The stored procedure [dbo].[CanariasBlog.CommentForBlog.Select1ByCommentForBlogId] returned more than one register/row");
                 }
         
                 foreach (CommentForBlogModel commentforblog in lstCommentForBlogModel)
@@ -222,7 +222,7 @@ namespace CanariasBlog.Areas.FiyiStack.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    var dataReader = sqlConnection.ExecuteReader("[dbo].[FiyiStack.CommentForBlog.Count]", commandType: CommandType.StoredProcedure, param: dp);
+                    var dataReader = sqlConnection.ExecuteReader("[dbo].[CanariasBlog.CommentForBlog.Count]", commandType: CommandType.StoredProcedure, param: dp);
                     DataTable.Load(dataReader);
                 }
 
@@ -248,13 +248,13 @@ namespace CanariasBlog.Areas.FiyiStack.Models
                 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    var dataReader = sqlConnection.ExecuteReader("[dbo].[FiyiStack.CommentForBlog.Select1ByCommentForBlogId]", commandType: CommandType.StoredProcedure, param: dp);
+                    var dataReader = sqlConnection.ExecuteReader("[dbo].[CanariasBlog.CommentForBlog.Select1ByCommentForBlogId]", commandType: CommandType.StoredProcedure, param: dp);
 
                     DataTable.Load(dataReader);
                 }
 
                 if (DataTable.Rows.Count > 1)
-                { throw new Exception("The stored procedure [dbo].[FiyiStack.CommentForBlog.Select1ByCommentForBlogId] returned more than one register/row"); }
+                { throw new Exception("The stored procedure [dbo].[CanariasBlog.CommentForBlog.Select1ByCommentForBlogId] returned more than one register/row"); }
 
                 return DataTable;
             }
@@ -270,7 +270,7 @@ namespace CanariasBlog.Areas.FiyiStack.Models
                 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    var dataReader = sqlConnection.ExecuteReader("[dbo].[FiyiStack.CommentForBlog.SelectAll]", commandType: CommandType.StoredProcedure, param: dp);
+                    var dataReader = sqlConnection.ExecuteReader("[dbo].[CanariasBlog.CommentForBlog.SelectAll]", commandType: CommandType.StoredProcedure, param: dp);
 
                     DataTable.Load(dataReader);
                 }
@@ -297,11 +297,11 @@ namespace CanariasBlog.Areas.FiyiStack.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    lstCommentForBlogModel = (List<CommentForBlogModel>)sqlConnection.Query<CommentForBlogModel>("[dbo].[FiyiStack.CommentForBlog.Select1ByCommentForBlogId]", dp, commandType: CommandType.StoredProcedure);
+                    lstCommentForBlogModel = (List<CommentForBlogModel>)sqlConnection.Query<CommentForBlogModel>("[dbo].[CanariasBlog.CommentForBlog.Select1ByCommentForBlogId]", dp, commandType: CommandType.StoredProcedure);
                 }
         
                 if (lstCommentForBlogModel.Count > 1)
-                { throw new Exception("The stored procedure [dbo].[FiyiStack.CommentForBlog.Select1ByCommentForBlogId] returned more than one register/row"); }
+                { throw new Exception("The stored procedure [dbo].[CanariasBlog.CommentForBlog.Select1ByCommentForBlogId] returned more than one register/row"); }
 
                 foreach (CommentForBlogModel commentforblog in lstCommentForBlogModel)
                 {
@@ -329,7 +329,7 @@ namespace CanariasBlog.Areas.FiyiStack.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    lstCommentForBlogModel = (List<CommentForBlogModel>)sqlConnection.Query<CommentForBlogModel>("[dbo].[FiyiStack.CommentForBlog.SelectAll]", dp, commandType: CommandType.StoredProcedure);
+                    lstCommentForBlogModel = (List<CommentForBlogModel>)sqlConnection.Query<CommentForBlogModel>("[dbo].[CanariasBlog.CommentForBlog.SelectAll]", dp, commandType: CommandType.StoredProcedure);
                 }
 
                 return lstCommentForBlogModel;
@@ -352,7 +352,7 @@ namespace CanariasBlog.Areas.FiyiStack.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    commentforblogSelectAllPaged.lstCommentForBlogModel = (List<CommentForBlogModel>)sqlConnection.Query<CommentForBlogModel>("[dbo].[FiyiStack.CommentForBlog.SelectAllPagedCustom]", dp, commandType: CommandType.StoredProcedure);
+                    commentforblogSelectAllPaged.lstCommentForBlogModel = (List<CommentForBlogModel>)sqlConnection.Query<CommentForBlogModel>("[dbo].[CanariasBlog.CommentForBlog.SelectAllPagedCustom]", dp, commandType: CommandType.StoredProcedure);
                     commentforblogSelectAllPaged.TotalRows = dp.Get<int>("TotalRows");
                 }
 
@@ -390,7 +390,7 @@ namespace CanariasBlog.Areas.FiyiStack.Models
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    var dataReader = sqlConnection.ExecuteReader("[dbo].[FiyiStack.CommentForBlog.Insert]", commandType: CommandType.StoredProcedure, param: dp);
+                    var dataReader = sqlConnection.ExecuteReader("[dbo].[CanariasBlog.CommentForBlog.Insert]", commandType: CommandType.StoredProcedure, param: dp);
                     DataTable.Load(dataReader);
                     NewEnteredId = dp.Get<int>("NewEnteredId");
                 }
@@ -425,7 +425,7 @@ namespace CanariasBlog.Areas.FiyiStack.Models
                 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    var dataReader = sqlConnection.ExecuteReader("[dbo].[FiyiStack.CommentForBlog.Insert]", commandType: CommandType.StoredProcedure, param: dp);
+                    var dataReader = sqlConnection.ExecuteReader("[dbo].[CanariasBlog.CommentForBlog.Insert]", commandType: CommandType.StoredProcedure, param: dp);
                     DataTable.Load(dataReader);
                     NewEnteredId = dp.Get<int>("NewEnteredId");
                 }
@@ -460,7 +460,7 @@ namespace CanariasBlog.Areas.FiyiStack.Models
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    var dataReader = sqlConnection.ExecuteReader("[dbo].[FiyiStack.CommentForBlog.Insert]", commandType: CommandType.StoredProcedure, param: dp);
+                    var dataReader = sqlConnection.ExecuteReader("[dbo].[CanariasBlog.CommentForBlog.Insert]", commandType: CommandType.StoredProcedure, param: dp);
                     DataTable.Load(dataReader);
                     NewEnteredId = dp.Get<int>("NewEnteredId");
                 }
@@ -496,7 +496,7 @@ namespace CanariasBlog.Areas.FiyiStack.Models
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    var dataReader = sqlConnection.ExecuteReader("[dbo].[FiyiStack.CommentForBlog.UpdateByCommentForBlogId]", commandType: CommandType.StoredProcedure, param: dp);
+                    var dataReader = sqlConnection.ExecuteReader("[dbo].[CanariasBlog.CommentForBlog.UpdateByCommentForBlogId]", commandType: CommandType.StoredProcedure, param: dp);
                     DataTable.Load(dataReader);
                     RowsAffected = dp.Get<int>("RowsAffected");
                 }
@@ -532,7 +532,7 @@ namespace CanariasBlog.Areas.FiyiStack.Models
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    var dataReader = sqlConnection.ExecuteReader("[dbo].[FiyiStack.CommentForBlog.UpdateByCommentForBlogId]", commandType: CommandType.StoredProcedure, param: dp);
+                    var dataReader = sqlConnection.ExecuteReader("[dbo].[CanariasBlog.CommentForBlog.UpdateByCommentForBlogId]", commandType: CommandType.StoredProcedure, param: dp);
                     DataTable.Load(dataReader);
                     RowsAffected = dp.Get<int>("RowsAffected");
                 }
@@ -568,7 +568,7 @@ namespace CanariasBlog.Areas.FiyiStack.Models
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    var dataReader = sqlConnection.ExecuteReader("[dbo].[FiyiStack.CommentForBlog.UpdateByCommentForBlogId]", commandType: CommandType.StoredProcedure, param: dp);
+                    var dataReader = sqlConnection.ExecuteReader("[dbo].[CanariasBlog.CommentForBlog.UpdateByCommentForBlogId]", commandType: CommandType.StoredProcedure, param: dp);
                     DataTable.Load(dataReader);
                     RowsAffected = dp.Get<int>("RowsAffected");
                 }
@@ -593,7 +593,7 @@ namespace CanariasBlog.Areas.FiyiStack.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    var dataReader = sqlConnection.ExecuteReader("[dbo].[FiyiStack.CommentForBlog.DeleteAll]", commandType: CommandType.StoredProcedure, param: dp);
+                    var dataReader = sqlConnection.ExecuteReader("[dbo].[CanariasBlog.CommentForBlog.DeleteAll]", commandType: CommandType.StoredProcedure, param: dp);
                     DataTable.Load(dataReader);
                 }
             }
@@ -617,7 +617,7 @@ namespace CanariasBlog.Areas.FiyiStack.Models
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    var dataReader = sqlConnection.ExecuteReader("[dbo].[FiyiStack.CommentForBlog.DeleteByCommentForBlogId]", commandType: CommandType.StoredProcedure, param: dp);
+                    var dataReader = sqlConnection.ExecuteReader("[dbo].[CanariasBlog.CommentForBlog.DeleteByCommentForBlogId]", commandType: CommandType.StoredProcedure, param: dp);
                     DataTable.Load(dataReader);
                     RowsAffected = dp.Get<int>("RowsAffected");
                 }
@@ -646,7 +646,7 @@ namespace CanariasBlog.Areas.FiyiStack.Models
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    var dataReader = sqlConnection.ExecuteReader("[dbo].[FiyiStack.CommentForBlog.DeleteByCommentForBlogId]", commandType: CommandType.StoredProcedure, param: dp);
+                    var dataReader = sqlConnection.ExecuteReader("[dbo].[CanariasBlog.CommentForBlog.DeleteByCommentForBlogId]", commandType: CommandType.StoredProcedure, param: dp);
                     DataTable.Load(dataReader);
                     RowsAffected = dp.Get<int>("RowsAffected");
                 }

@@ -1,5 +1,6 @@
 @page
 @using CanariasBlog.Areas.FiyiStack.Models
+@using CanariasBlog.Areas.CMSCore.Models;
 @model CanariasBlog.Areas.FiyiStack.Pages.BlogNonQueryPageModel
 @{
     Layout = "_LayoutDashboard";
@@ -73,7 +74,7 @@
                         blog
                     </h2>
                     <input type="hidden" 
-                        id="fiyistack-blog-blogid-input" 
+                        id="canariasblog-blog-blogid-input" 
                         value="@BlogId"/>
                     <!-- Breadcrumb -->
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
@@ -102,13 +103,13 @@
                 <div class="col-lg-6 col-5 text-right">
                     <!-- XL Screens -->
                     <div class="d-none d-xl-inline">
-                        <a href="/FiyiStack/BlogQueryPage" class="btn btn-secondary">
+                        <a href="/CanariasBlog/BlogQueryPage" class="btn btn-secondary">
                             <i class="fas fa-angle-left"></i> Go back
                         </a>
                     </div>
                     <!-- Other Screens -->
                     <div class="d-inline d-sm-inline d-md-inline d-lg-inline d-xl-none">
-                        <a href="/FiyiStack/BlogQueryPage" class="btn btn-secondary">
+                        <a href="/CanariasBlog/BlogQueryPage" class="btn btn-secondary">
                             <i class="fas fa-angle-left"></i>
                         </a>
                     </div>
@@ -135,7 +136,7 @@
                                 min="1" 
                                 max="100" 
                                 type="text" 
-                                id="fiyistack-blog-title-input" 
+                                id="canariasblog-blog-title-input" 
                                 value="@Title"
                                 />
                             
@@ -145,11 +146,11 @@
                             <i class="fas fa-font"></i> 
                             Body
                         </label>
-                        <div id="fiyistack-blog-body-input">
+                        <div id="canariasblog-blog-body-input">
                         </div>
                         <input type="hidden" 
                             value="@Body" 
-                            id="fiyistack-blog-body-hidden-value">
+                            id="canariasblog-blog-body-hidden-value">
                         <div class="mb-3"></div>
                         <!-- BackgroundImage -->
                         <div class="form-group">
@@ -169,7 +170,7 @@
                                         <input type="file" 
                                             min="1" 
                                             max="8000" 
-                                            id="fiyistack-blog-backgroundimage-input" 
+                                            id="canariasblog-blog-backgroundimage-input" 
                                             value=""/>
                                     </span>
                                     <a href="#" class="btn btn-outline-danger fileinput-exists" data-dismiss="fileinput">
@@ -180,7 +181,7 @@
                             <input type="hidden" 
                                 min="1" 
                                 max="8000" 
-                                id="fiyistack-blog-backgroundimage-readonly" 
+                                id="canariasblog-blog-backgroundimage-readonly" 
                                 value="@BackgroundImage"/>
                             <br />
                             @if (@BackgroundImage == ""){
@@ -204,7 +205,7 @@
                             </label>
                             <input class="form-control" 
                                 type="number" 
-                                id="fiyistack-blog-numberoflikes-input" 
+                                id="canariasblog-blog-numberoflikes-input" 
                                 value="@NumberOfLikes" 
                                 min="0" 
                                 max="2147483647" 
@@ -221,7 +222,7 @@
                             </label>
                             <input class="form-control" 
                                 type="number" 
-                                id="fiyistack-blog-numberofcomments-input" 
+                                id="canariasblog-blog-numberofcomments-input" 
                                 value="@NumberOfComments" 
                                 min="0" 
                                 max="2147483647" 
@@ -238,7 +239,7 @@
                                     <i class="@NonQueryIcon"></i> 
                                     @NonQueryText
                             </button>
-                            <a href="/FiyiStack/BlogQueryPage" 
+                            <a href="/CanariasBlog/BlogQueryPage" 
                                 class="btn btn-outline-primary col-auto mr-3 mt-4 text-nowrap">
                                     <i class="fas fa-angle-left"></i> 
                                     Go back
@@ -271,7 +272,7 @@
                         <form role="form">
                             <div class="form-group">
                                 <div class="input-group input-group-merge input-group-alternative">
-                                    <select id="fiyistack-blog-foreignkeydropdown-select" class="form-control" data-toggle="select" title="Simple select" data-live-search="true" data-live-search-placeholder="Choose value" data-allow-reset="true">
+                                    <select id="canariasblog-blog-foreignkeydropdown-select" class="form-control" data-toggle="select" title="Simple select" data-live-search="true" data-live-search-placeholder="Choose value" data-allow-reset="true">
                                         <option value="0"></option> <!--This must be empty-->
                                     </select>
                                 </div>
@@ -320,4 +321,4 @@
 
 <script src="/js/BasicCore/jquery-3.6.1.min.js"></script>
 <script src="/assets/vendor/quill/dist/quill.min.js"></script>
-<script src="/js/FiyiStack/Blog/jQuery/BlogNonQuery_jQuery.js"></script>
+<script src="/js/CanariasBlog/Blog/jQuery/BlogNonQuery_jQuery.js"></script>

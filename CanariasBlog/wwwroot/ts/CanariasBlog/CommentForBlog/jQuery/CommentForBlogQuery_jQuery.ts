@@ -113,40 +113,40 @@ class CommentForBlogQuery {
                         TotalPages = response_commentforblogQuery.TotalPages ?? 0;
 
                         //Query string
-                        $("#fiyistack-commentforblog-query-string").attr("placeholder", `Search... (${TotalRows} records)`);
+                        $("#canariasblog-commentforblog-query-string").attr("placeholder", `Search... (${TotalRows} records)`);
                         //Total pages of pagination
-                        $("#fiyistack-commentforblog-total-pages-lg, #fiyistack-commentforblog-total-pages").html(TotalPages.toString());
+                        $("#canariasblog-commentforblog-total-pages-lg, #fiyistack-commentforblog-total-pages").html(TotalPages.toString());
                         //Actual page number of pagination
-                        $("#fiyistack-commentforblog-actual-page-number-lg, #fiyistack-commentforblog-actual-page-number").html(ActualPageNumber.toString());
+                        $("#canariasblog-commentforblog-actual-page-number-lg, #fiyistack-commentforblog-actual-page-number").html(ActualPageNumber.toString());
                         //If we are at the final of book disable next and last buttons in pagination
                         if (ActualPageNumber === TotalPages) {
-                            $("#fiyistack-commentforblog-lnk-next-page-lg, #fiyistack-commentforblog-lnk-next-page").attr("disabled", "disabled");
-                            $("#fiyistack-commentforblog-lnk-last-page-lg, #fiyistack-commentforblog-lnk-last-page").attr("disabled", "disabled");
-                            $("#fiyistack-commentforblog-search-more-button-in-list").html("");
+                            $("#canariasblog-commentforblog-lnk-next-page-lg, #fiyistack-commentforblog-lnk-next-page").attr("disabled", "disabled");
+                            $("#canariasblog-commentforblog-lnk-last-page-lg, #fiyistack-commentforblog-lnk-last-page").attr("disabled", "disabled");
+                            $("#canariasblog-commentforblog-search-more-button-in-list").html("");
                         }
                         else {
-                            $("#fiyistack-commentforblog-lnk-next-page-lg, #fiyistack-commentforblog-lnk-next-page").removeAttr("disabled");
-                            $("#fiyistack-commentforblog-lnk-last-page-lg, #fiyistack-commentforblog-lnk-last-page").removeAttr("disabled");
+                            $("#canariasblog-commentforblog-lnk-next-page-lg, #fiyistack-commentforblog-lnk-next-page").removeAttr("disabled");
+                            $("#canariasblog-commentforblog-lnk-last-page-lg, #fiyistack-commentforblog-lnk-last-page").removeAttr("disabled");
                             //Scroll arrow for list view
-                            $("#fiyistack-commentforblog-search-more-button-in-list").html("<i class='fas fa-2x fa-chevron-down'></i>");
+                            $("#canariasblog-commentforblog-search-more-button-in-list").html("<i class='fas fa-2x fa-chevron-down'></i>");
                         }
                         //If we are at the begining of the book disable previous and first buttons in pagination
                         if (ActualPageNumber === 1) {
-                            $("#fiyistack-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").attr("disabled", "disabled");
-                            $("#fiyistack-commentforblog-lnk-first-page-lg, #fiyistack-commentforblog-lnk-first-page").attr("disabled", "disabled");
+                            $("#canariasblog-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").attr("disabled", "disabled");
+                            $("#canariasblog-commentforblog-lnk-first-page-lg, #fiyistack-commentforblog-lnk-first-page").attr("disabled", "disabled");
                         }
                         else {
-                            $("#fiyistack-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").removeAttr("disabled");
-                            $("#fiyistack-commentforblog-lnk-first-page-lg, #fiyistack-commentforblog-lnk-first-page").removeAttr("disabled");
+                            $("#canariasblog-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").removeAttr("disabled");
+                            $("#canariasblog-commentforblog-lnk-first-page-lg, #fiyistack-commentforblog-lnk-first-page").removeAttr("disabled");
                         }
                         //If book is empty set to default pagination values
                         if (response_commentforblogQuery?.lstCommentForBlogModel?.length === 0) {
-                            $("#fiyistack-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").attr("disabled", "disabled");
-                            $("#fiyistack-commentforblog-lnk-first-page-lg, #fiyistack-commentforblog-lnk-first-page").attr("disabled", "disabled");
-                            $("#fiyistack-commentforblog-lnk-next-page-lg, #fiyistack-commentforblog-lnk-next-page").attr("disabled", "disabled");
-                            $("#fiyistack-commentforblog-lnk-last-page-lg, #fiyistack-commentforblog-lnk-last-page").attr("disabled", "disabled");
-                            $("#fiyistack-commentforblog-total-pages-lg, #fiyistack-commentforblog-total-pages").html("1");
-                            $("#fiyistack-commentforblog-actual-page-number-lg, #fiyistack-commentforblog-actual-page-number").html("1");
+                            $("#canariasblog-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").attr("disabled", "disabled");
+                            $("#canariasblog-commentforblog-lnk-first-page-lg, #fiyistack-commentforblog-lnk-first-page").attr("disabled", "disabled");
+                            $("#canariasblog-commentforblog-lnk-next-page-lg, #fiyistack-commentforblog-lnk-next-page").attr("disabled", "disabled");
+                            $("#canariasblog-commentforblog-lnk-last-page-lg, #fiyistack-commentforblog-lnk-last-page").attr("disabled", "disabled");
+                            $("#canariasblog-commentforblog-total-pages-lg, #fiyistack-commentforblog-total-pages").html("1");
+                            $("#canariasblog-commentforblog-actual-page-number-lg, #fiyistack-commentforblog-actual-page-number").html("1");
                         }
                         //Read data book
                         response_commentforblogQuery?.lstCommentForBlogModel?.forEach(row => {
@@ -200,7 +200,7 @@ class CommentForBlogQuery {
     
     <!-- Actions -->
     <td class="text-right">
-        <a class="btn btn-icon-only text-primary" href="/FiyiStack/CommentForBlogNonQueryPage?CommentForBlogId=${row.CommentForBlogId}" role="button" data-toggle="tooltip" data-original-title="Edit">
+        <a class="btn btn-icon-only text-primary" href="/CanariasBlog/CommentForBlogNonQueryPage?CommentForBlogId=${row.CommentForBlogId}" role="button" data-toggle="tooltip" data-original-title="Edit">
             <i class="fas fa-edit"></i>
         </a>
         <div class="dropdown">
@@ -279,7 +279,7 @@ class CommentForBlogQuery {
                                 </a>
                                 <input type="hidden" value="${row.CommentForBlogId}"/>
                             </div>
-                            <a class="icon icon-shape bg-white icon-sm rounded-circle shadow" href="/FiyiStack/CommentForBlogNonQueryPage?CommentForBlogId=${row.CommentForBlogId}" role="button" data-toggle="tooltip" data-original-title="edit">
+                            <a class="icon icon-shape bg-white icon-sm rounded-circle shadow" href="/CanariasBlog/CommentForBlogNonQueryPage?CommentForBlogId=${row.CommentForBlogId}" role="button" data-toggle="tooltip" data-original-title="edit">
                                 <i class="fas fa-edit text-primary"></i>
                             </a>
                             <div class="dropup">
@@ -306,19 +306,19 @@ class CommentForBlogQuery {
 
                         //If view table is activated, clear table view, if not, clear list view
                         if (ViewToggler === "Table") {
-                            $("#fiyistack-commentforblog-body-and-head-table").html("");
-                            $("#fiyistack-commentforblog-body-and-head-table").html(TableContent);
+                            $("#canariasblog-commentforblog-body-and-head-table").html("");
+                            $("#canariasblog-commentforblog-body-and-head-table").html(TableContent);
                         }
                         else {
                             //Used for list view
                             if (ScrollDownNSearchFlag) {
-                                $("#fiyistack-commentforblog-body-list").append(ListContent);
+                                $("#canariasblog-commentforblog-body-list").append(ListContent);
                                 ScrollDownNSearchFlag = false;
                             }
                             else {
                                 //Clear list view
-                                $("#fiyistack-commentforblog-body-list").html("");
-                                $("#fiyistack-commentforblog-body-list").html(ListContent);
+                                $("#canariasblog-commentforblog-body-list").html("");
+                                $("#canariasblog-commentforblog-body-list").html(ListContent);
                             }
                             }
                     }
@@ -449,7 +449,7 @@ function ValidateAndSearch() {
 }
 
 //LOAD EVENT
-if ($("#fiyistack-commentforblog-title-page").html().includes("Query commentforblog")) {
+if ($("#canariasblog-commentforblog-title-page").html().includes("Query commentforblog")) {
     //Set to default values
     QueryString = "";
     ActualPageNumber = 1;
@@ -460,69 +460,69 @@ if ($("#fiyistack-commentforblog-title-page").html().includes("Query commentforb
     TotalPages = 0;
     ViewToggler = "List";
     //Disable first and previous links in pagination
-    $("#fiyistack-commentforblog-lnk-first-page-lg, #fiyistack-commentforblog-lnk-first-page").attr("disabled", "disabled");
-    $("#fiyistack-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").attr("disabled", "disabled");
+    $("#canariasblog-commentforblog-lnk-first-page-lg, #fiyistack-commentforblog-lnk-first-page").attr("disabled", "disabled");
+    $("#canariasblog-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").attr("disabled", "disabled");
     //Hide messages
-    $("#fiyistack-commentforblog-export-message").html("");
+    $("#canariasblog-commentforblog-export-message").html("");
 
     ValidateAndSearch();
 }
 //CLICK, SCROLL AND KEYBOARD EVENTS
 //Search button
-$($("#fiyistack-commentforblog-search-button")).on("click", function () {
+$($("#canariasblog-commentforblog-search-button")).on("click", function () {
     ValidateAndSearch();
 });
 
 //Query string
-$("#fiyistack-commentforblog-query-string").on("change keyup input", function (e) {
+$("#canariasblog-commentforblog-query-string").on("change keyup input", function (e) {
     //If undefined, set QueryString to "" value
     QueryString = ($(this).val()?.toString()) ?? "" ;
     ValidateAndSearch();
 });
 
 //First page link in pagination
-$("#fiyistack-commentforblog-lnk-first-page-lg, #fiyistack-commentforblog-lnk-first-page").on("click", function (e) {
+$("#canariasblog-commentforblog-lnk-first-page-lg, #fiyistack-commentforblog-lnk-first-page").on("click", function (e) {
     ActualPageNumber = 1;
     ValidateAndSearch();
 });
 
 //Previous page link in pagination
-$("#fiyistack-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").on("click", function (e) {
+$("#canariasblog-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").on("click", function (e) {
     ActualPageNumber -= 1;
     ValidateAndSearch();
 });
 
 //Next page link in pagination
-$("#fiyistack-commentforblog-lnk-next-page-lg, #fiyistack-commentforblog-lnk-next-page").on("click", function (e) {
+$("#canariasblog-commentforblog-lnk-next-page-lg, #fiyistack-commentforblog-lnk-next-page").on("click", function (e) {
     ActualPageNumber += 1;
     ValidateAndSearch();
 });
 
 //Last page link in pagination
-$("#fiyistack-commentforblog-lnk-last-page-lg, #fiyistack-commentforblog-lnk-last-page").on("click", function (e) {
+$("#canariasblog-commentforblog-lnk-last-page-lg, #fiyistack-commentforblog-lnk-last-page").on("click", function (e) {
     ActualPageNumber = TotalPages;
     ValidateAndSearch();
 });
 
 //Table view button
-$("#fiyistack-commentforblog-table-view-button").on("click", function (e) {
-    $("#fiyistack-commentforblog-view-toggler").val("Table");
+$("#canariasblog-commentforblog-table-view-button").on("click", function (e) {
+    $("#canariasblog-commentforblog-view-toggler").val("Table");
     ViewToggler = "Table";
     //Reset some values to default
     ActualPageNumber = 1;
     //Clear table view
-    $("#fiyistack-commentforblog-body-and-head-table").html("");
+    $("#canariasblog-commentforblog-body-and-head-table").html("");
     ValidateAndSearch();
 });
 
 //List view button
-$("#fiyistack-commentforblog-list-view-button").on("click", function (e) {
-    $("#fiyistack-commentforblog-view-toggler").val("List");
+$("#canariasblog-commentforblog-list-view-button").on("click", function (e) {
+    $("#canariasblog-commentforblog-view-toggler").val("List");
     ViewToggler = "List";
     //Reset some values to default
     ActualPageNumber = 1;
     //Clear list view
-    $("#fiyistack-commentforblog-body-list").html("");
+    $("#canariasblog-commentforblog-body-list").html("");
     ValidateAndSearch();
 });
 
@@ -530,8 +530,8 @@ $("#fiyistack-commentforblog-list-view-button").on("click", function (e) {
 function ScrollDownNSearch() {
     let WindowsTopDistance: number = $(window).scrollTop() ?? 0;
     let WindowsBottomDistance: number = ($(window).scrollTop() ?? 0) + ($(window).innerHeight() ?? 0);
-    let CardsFooterTopPosition: number = $("#fiyistack-commentforblog-search-more-button-in-list").offset()?.top ?? 0;
-    let CardsFooterBottomPosition: number = ($("#fiyistack-commentforblog-search-more-button-in-list").offset()?.top ?? 0) + ($("#fiyistack-commentforblog-search-more-button-in-list").outerHeight() ?? 0);
+    let CardsFooterTopPosition: number = $("#canariasblog-commentforblog-search-more-button-in-list").offset()?.top ?? 0;
+    let CardsFooterBottomPosition: number = ($("#canariasblog-commentforblog-search-more-button-in-list").offset()?.top ?? 0) + ($("#canariasblog-commentforblog-search-more-button-in-list").outerHeight() ?? 0);
 
     if (WindowsTopDistance > LastTopDistance) {
         //Scroll down
@@ -553,7 +553,7 @@ function ScrollDownNSearch() {
 $(window).on("scroll", ScrollDownNSearch);
 
 //Export as PDF button
-$("#fiyistack-commentforblog-export-as-pdf").on("click", function (e) {
+$("#canariasblog-commentforblog-export-as-pdf").on("click", function (e) {
     //There are two exportation types, All and JustChecked
     let ExportationType: string = "";
     let DateTimeNow: Ajax;
@@ -564,7 +564,7 @@ $("#fiyistack-commentforblog-export-as-pdf").on("click", function (e) {
         'Content-Type': 'application/json; charset=utf-8'
     };
 
-    if ($("#fiyistack-commentforblog-export-rows-all-checkbox").is(":checked")) {
+    if ($("#canariasblog-commentforblog-export-rows-all-checkbox").is(":checked")) {
         ExportationType = "All";
     }
     else{
@@ -592,9 +592,9 @@ $("#fiyistack-commentforblog-export-as-pdf").on("click", function (e) {
         }
     }
 
-    Rx.from(ajax.post("/api/FiyiStack/CommentForBlog/1/ExportAsPDF/" + ExportationType, Body, Header)).subscribe({
+    Rx.from(ajax.post("/api/CanariasBlog/CommentForBlog/1/ExportAsPDF/" + ExportationType, Body, Header)).subscribe({
         next: newrow => {
-            $("#fiyistack-commentforblog-export-message").html("<strong>Exporting as PDF</strong>");
+            $("#canariasblog-commentforblog-export-message").html("<strong>Exporting as PDF</strong>");
             DateTimeNow = newrow.response as Ajax;
         },
         complete: () => {
@@ -603,7 +603,7 @@ $("#fiyistack-commentforblog-export-as-pdf").on("click", function (e) {
             $.notify({ icon: "fas fa-check", message: "Conversion completed" }, { type: "success", placement: { from: "bottom", align: "center" } });
 
             //Show download button for PDF file
-            $("#fiyistack-commentforblog-export-message").html(`<a class="btn btn-icon btn-success" href="/PDFFiles/FiyiStack/CommentForBlog/CommentForBlog_${DateTimeNow.AjaxForString}.pdf" type="button" download>
+            $("#canariasblog-commentforblog-export-message").html(`<a class="btn btn-icon btn-success" href="/PDFFiles/CanariasBlog/CommentForBlog/CommentForBlog_${DateTimeNow.AjaxForString}.pdf" type="button" download>
                                             <span class="btn-inner--icon"><i class="fas fa-file-pdf"></i></span>
                                             <span class="btn-inner--text">Download</span>
                                         </a>`);
@@ -619,7 +619,7 @@ $("#fiyistack-commentforblog-export-as-pdf").on("click", function (e) {
 });
 
 //Export as Excel button
-$("#fiyistack-commentforblog-export-as-excel").on("click", function (e) {
+$("#canariasblog-commentforblog-export-as-excel").on("click", function (e) {
     //There are two exportation types, All and JustChecked
     let ExportationType: string = "";
     let DateTimeNow: Ajax;
@@ -630,7 +630,7 @@ $("#fiyistack-commentforblog-export-as-excel").on("click", function (e) {
         'Content-Type': 'application/json; charset=utf-8'
     };
 
-    if ($("#fiyistack-commentforblog-export-rows-all-checkbox").is(":checked")) {
+    if ($("#canariasblog-commentforblog-export-rows-all-checkbox").is(":checked")) {
         ExportationType = "All";
     }
     else {
@@ -658,9 +658,9 @@ $("#fiyistack-commentforblog-export-as-excel").on("click", function (e) {
         }
     }
 
-    Rx.from(ajax.post("/api/FiyiStack/CommentForBlog/1/ExportAsExcel/" + ExportationType, Body, Header)).subscribe({
+    Rx.from(ajax.post("/api/CanariasBlog/CommentForBlog/1/ExportAsExcel/" + ExportationType, Body, Header)).subscribe({
         next: newrow => {
-            $("#fiyistack-commentforblog-export-message").html("<strong>Exporting as Excel</strong>");
+            $("#canariasblog-commentforblog-export-message").html("<strong>Exporting as Excel</strong>");
             DateTimeNow = newrow.response as Ajax;
         },
         complete: () => {
@@ -669,7 +669,7 @@ $("#fiyistack-commentforblog-export-as-excel").on("click", function (e) {
             $.notify({ icon: "fas fa-check", message: "Conversion completed" }, { type: "success", placement: { from: "bottom", align: "center" } });
 
             //Show download button for Excel file
-            $("#fiyistack-commentforblog-export-message").html(`<a class="btn btn-icon btn-success" href="/ExcelFiles/FiyiStack/CommentForBlog/CommentForBlog_${DateTimeNow.AjaxForString}.xlsx" type="button" download>
+            $("#canariasblog-commentforblog-export-message").html(`<a class="btn btn-icon btn-success" href="/ExcelFiles/CanariasBlog/CommentForBlog/CommentForBlog_${DateTimeNow.AjaxForString}.xlsx" type="button" download>
                                             <span class="btn-inner--icon"><i class="fas fa-file-excel"></i></span>
                                             <span class="btn-inner--text">Download</span>
                                         </a>`);
@@ -684,7 +684,7 @@ $("#fiyistack-commentforblog-export-as-excel").on("click", function (e) {
 });
 
 //Export as CSV button
-$("#fiyistack-commentforblog-export-as-csv").on("click", function (e) {
+$("#canariasblog-commentforblog-export-as-csv").on("click", function (e) {
     //There are two exportation types, All and JustChecked
     let ExportationType: string = "";
     let DateTimeNow: Ajax;
@@ -695,7 +695,7 @@ $("#fiyistack-commentforblog-export-as-csv").on("click", function (e) {
         'Content-Type': 'application/json; charset=utf-8'
     };
 
-    if ($("#fiyistack-commentforblog-export-rows-all-checkbox").is(":checked")) {
+    if ($("#canariasblog-commentforblog-export-rows-all-checkbox").is(":checked")) {
         ExportationType = "All";
     }
     else {
@@ -723,9 +723,9 @@ $("#fiyistack-commentforblog-export-as-csv").on("click", function (e) {
         }
     }
 
-    Rx.from(ajax.post("/api/FiyiStack/CommentForBlog/1/ExportAsCSV/" + ExportationType, Body, Header)).subscribe({
+    Rx.from(ajax.post("/api/CanariasBlog/CommentForBlog/1/ExportAsCSV/" + ExportationType, Body, Header)).subscribe({
         next: newrow => {
-            $("#fiyistack-commentforblog-export-message").html("<strong>Exporting as CSV</strong>");
+            $("#canariasblog-commentforblog-export-message").html("<strong>Exporting as CSV</strong>");
             DateTimeNow = newrow.response as Ajax;
         },
         complete: () => {
@@ -734,7 +734,7 @@ $("#fiyistack-commentforblog-export-as-csv").on("click", function (e) {
             $.notify({ icon: "fas fa-check", message: "Conversion completed" }, { type: "success", placement: { from: "bottom", align: "center" } });
 
             //Show download button for CSV file
-            $("#fiyistack-commentforblog-export-message").html(`<a class="btn btn-icon btn-success" href="/CSVFiles/FiyiStack/CommentForBlog/CommentForBlog_${DateTimeNow.AjaxForString}.csv" type="button" download>
+            $("#canariasblog-commentforblog-export-message").html(`<a class="btn btn-icon btn-success" href="/CSVFiles/CanariasBlog/CommentForBlog/CommentForBlog_${DateTimeNow.AjaxForString}.csv" type="button" download>
                                             <span class="btn-inner--icon"><i class="fas fa-file-csv"></i></span>
                                             <span class="btn-inner--text">Download</span>
                                         </a>`);
@@ -749,17 +749,17 @@ $("#fiyistack-commentforblog-export-as-csv").on("click", function (e) {
 });
 
 //Export close button in modal
-$("#fiyistack-commentforblog-export-close-button").on("click", function (e) {
-    $("#fiyistack-commentforblog-export-message").html("");
+$("#canariasblog-commentforblog-export-close-button").on("click", function (e) {
+    $("#canariasblog-commentforblog-export-message").html("");
 });
 
 //Massive action Copy
-$("#fiyistack-commentforblog-massive-action-copy").on("click", function (e) {
+$("#canariasblog-commentforblog-massive-action-copy").on("click", function (e) {
     //There are two deletion types, All and JustChecked
     let CopyType: string = "";
     let Body: Ajax = {};
 
-    if ($("#fiyistack-commentforblog-copy-rows-all-checkbox").is(":checked")) {
+    if ($("#canariasblog-commentforblog-copy-rows-all-checkbox").is(":checked")) {
         CopyType = "All";
     }
     else {
@@ -802,12 +802,12 @@ $("#fiyistack-commentforblog-massive-action-copy").on("click", function (e) {
 });
 
 //Massive action Delete
-$("#fiyistack-commentforblog-massive-action-delete").on("click", function (e) {
+$("#canariasblog-commentforblog-massive-action-delete").on("click", function (e) {
     //There are two deletion types, All and JustChecked
     let DeleteType: string = "";
     let Body: Ajax = {};
 
-    if ($("#fiyistack-commentforblog-copy-rows-all-checkbox").is(":checked")) {
+    if ($("#canariasblog-commentforblog-copy-rows-all-checkbox").is(":checked")) {
         DeleteType = "All";
     }
     else {

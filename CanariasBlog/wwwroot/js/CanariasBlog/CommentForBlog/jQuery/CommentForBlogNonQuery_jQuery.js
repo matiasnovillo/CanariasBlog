@@ -27,12 +27,12 @@ var formData = new FormData();
 //LOAD EVENT
 $(document).ready(function () {
 
-    $("#fiyistack-commentforblog-blogid-select").on("change", function (e) {
-        $("#fiyistack-commentforblog-blogid-list").html(`<li class="nav-item">
+    $("#canariasblog-commentforblog-blogid-select").on("change", function (e) {
+        $("#canariasblog-commentforblog-blogid-list").html(`<li class="nav-item">
             <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-text-1-tab" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="" aria-selected="true">
-                ${$("#fiyistack-commentforblog-blogid-select option:selected").text()}
+                ${$("#canariasblog-commentforblog-blogid-select option:selected").text()}
             </a>
-            <input type="hidden" id="fiyistack-commentforblog-blogid-input" value="${$("#fiyistack-commentforblog-blogid-select option:selected").val()}"/>
+            <input type="hidden" id="fiyistack-commentforblog-blogid-input" value="${$("#canariasblog-commentforblog-blogid-select option:selected").val()}"/>
         </li>`);
     });
     
@@ -48,10 +48,10 @@ $(document).ready(function () {
             if (form.checkValidity() === true) {
                 
                 //CommentForBlogId
-                formData.append("fiyistack-commentforblog-commentforblogid-input", $("#fiyistack-commentforblog-commentforblogid-input").val());
+                formData.append("fiyistack-commentforblog-commentforblogid-input", $("#canariasblog-commentforblog-commentforblogid-input").val());
 
-                formData.append("fiyistack-commentforblog-comment-input", $("#fiyistack-commentforblog-comment-input").val());
-                formData.append("fiyistack-commentforblog-blogid-input", $("#fiyistack-commentforblog-blogid-input").val());
+                formData.append("fiyistack-commentforblog-comment-input", $("#canariasblog-commentforblog-comment-input").val());
+                formData.append("fiyistack-commentforblog-blogid-input", $("#canariasblog-commentforblog-blogid-input").val());
                 
 
                 //Setup request
@@ -69,11 +69,11 @@ $(document).ready(function () {
                     }
                     else {
                         //SUCCESS
-                        window.location.replace("/FiyiStack/CommentForBlogQueryPage");
+                        window.location.replace("/CanariasBlog/CommentForBlogQueryPage");
                     }
                 };
                 //Open connection
-                xmlHttpRequest.open("POST", "/api/FiyiStack/CommentForBlog/1/InsertOrUpdateAsync", true);
+                xmlHttpRequest.open("POST", "/api/CanariasBlog/CommentForBlog/1/InsertOrUpdateAsync", true);
                 //Send request
                 xmlHttpRequest.send(formData);
             }

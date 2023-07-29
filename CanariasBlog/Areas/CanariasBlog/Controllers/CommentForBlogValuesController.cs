@@ -51,7 +51,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
         }
 
         #region Queries
-        [HttpGet("~/api/FiyiStack/CommentForBlog/1/Select1ByCommentForBlogIdToJSON/{CommentForBlogId:int}")]
+        [HttpGet("~/api/CanariasBlog/CommentForBlog/1/Select1ByCommentForBlogIdToJSON/{CommentForBlogId:int}")]
         public CommentForBlogModel Select1ByCommentForBlogIdToJSON(int CommentForBlogId)
         {
             try
@@ -83,7 +83,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
             }
         }
 
-        [HttpGet("~/api/FiyiStack/CommentForBlog/1/SelectAllToJSON")]
+        [HttpGet("~/api/CanariasBlog/CommentForBlog/1/SelectAllToJSON")]
         public List<CommentForBlogModel> SelectAllToJSON()
         {
             try
@@ -115,7 +115,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
             }
         }
 
-        [HttpPost("~/api/FiyiStack/CommentForBlog/1/SelectAllPagedToJSON")]
+        [HttpPost("~/api/CanariasBlog/CommentForBlog/1/SelectAllPagedToJSON")]
         public commentforblogSelectAllPaged SelectAllPagedToJSON([FromBody] commentforblogSelectAllPaged commentforblogSelectAllPaged)
         {
             try
@@ -150,7 +150,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
 
         #region Non-Queries
         //[Produces("text/plain")] For production mode, uncomment this line
-        [HttpPost("~/api/FiyiStack/CommentForBlog/1/InsertOrUpdateAsync")]
+        [HttpPost("~/api/CanariasBlog/CommentForBlog/1/InsertOrUpdateAsync")]
         public async Task<IActionResult> InsertOrUpdateAsync()
         {
             try
@@ -222,7 +222,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
                         if (File.Length > 0)
                         {
                             var FileName = HttpContext.Request.Form.Files[i].FileName;
-                            var FilePath = $@"{_WebHostEnvironment.WebRootPath}/Uploads/FiyiStack/CommentForBlog/";
+                            var FilePath = $@"{_WebHostEnvironment.WebRootPath}/Uploads/CanariasBlog/CommentForBlog/";
 
                             using (var FileStream = new FileStream($@"{FilePath}{FileName}", FileMode.Create))
                             {
@@ -270,7 +270,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
         }
 
         //[Produces("text/plain")] For production mode, uncomment this line
-        [HttpDelete("~/api/FiyiStack/CommentForBlog/1/DeleteByCommentForBlogId/{CommentForBlogId:int}")]
+        [HttpDelete("~/api/CanariasBlog/CommentForBlog/1/DeleteByCommentForBlogId/{CommentForBlogId:int}")]
         public IActionResult DeleteByCommentForBlogId(int CommentForBlogId)
         {
             try
@@ -304,7 +304,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
         }
 
         //[Produces("text/plain")] For production mode, uncomment this line
-        [HttpPost("~/api/FiyiStack/CommentForBlog/1/DeleteManyOrAll/{DeleteType}")]
+        [HttpPost("~/api/CanariasBlog/CommentForBlog/1/DeleteManyOrAll/{DeleteType}")]
         public IActionResult DeleteManyOrAll([FromBody] Ajax Ajax, string DeleteType)
         {
             try
@@ -339,7 +339,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
         }
 
         //[Produces("text/plain")] For production mode, uncomment this line
-        [HttpPost("~/api/FiyiStack/CommentForBlog/1/CopyByCommentForBlogId/{CommentForBlogId:int}")]
+        [HttpPost("~/api/CanariasBlog/CommentForBlog/1/CopyByCommentForBlogId/{CommentForBlogId:int}")]
         public IActionResult CopyByCommentForBlogId(int CommentForBlogId)
         {
             try
@@ -374,7 +374,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
         }
 
         //[Produces("text/plain")] For production mode, uncomment this line
-        [HttpPost("~/api/FiyiStack/CommentForBlog/1/CopyManyOrAll/{CopyType}")]
+        [HttpPost("~/api/CanariasBlog/CommentForBlog/1/CopyManyOrAll/{CopyType}")]
         public IActionResult CopyManyOrAll([FromBody] Ajax Ajax, string CopyType)
         {
             try
@@ -415,7 +415,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
             }
         }
         //[Produces("text/plain")] For production mode, uncomment this line
-        [HttpPost("~/api/FiyiStack/CommentForBlog/1/PostComment")]
+        [HttpPost("~/api/CanariasBlog/CommentForBlog/1/PostComment")]
         
         public IActionResult PostComment()
         {
@@ -436,7 +436,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
                 else
                 {
                     Message = _ICommentForBlog.PostComment(UserId, BlogId, Comment);
-                    BlogModel BlogModel = new BlogModel(BlogId, "en");
+                    BlogModel BlogModel = new BlogModel(BlogId);
                     BlogModel.NumberOfComments += 1;
                     _IBlog.UpdateByBlogId(BlogModel);
                 }
@@ -466,7 +466,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
         }
 
         //[Produces("text/plain")] For production mode, uncomment this line
-        [HttpPost("~/api/FiyiStack/CommentForBlog/1/PostLike")]
+        [HttpPost("~/api/CanariasBlog/CommentForBlog/1/PostLike")]
 
         public IActionResult PostLike()
         {
@@ -506,7 +506,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
 
         #region Other actions
         //[Produces("text/plain")] For production mode, uncomment this line
-        [HttpPost("~/api/FiyiStack/CommentForBlog/1/ExportAsPDF/{ExportationType}")]
+        [HttpPost("~/api/CanariasBlog/CommentForBlog/1/ExportAsPDF/{ExportationType}")]
         public IActionResult ExportAsPDF([FromBody] Ajax Ajax, string ExportationType)
         {
             try
@@ -541,7 +541,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
         }
 
         //[Produces("text/plain")] For production mode, uncomment this line
-        [HttpPost("~/api/FiyiStack/CommentForBlog/1/ExportAsExcel/{ExportationType}")]
+        [HttpPost("~/api/CanariasBlog/CommentForBlog/1/ExportAsExcel/{ExportationType}")]
         public IActionResult ExportAsExcel([FromBody] Ajax Ajax, string ExportationType)
         {
             try
@@ -576,7 +576,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
         }
 
         //[Produces("text/plain")] For production mode, uncomment this line
-        [HttpPost("~/api/FiyiStack/CommentForBlog/1/ExportAsCSV/{ExportationType}")]
+        [HttpPost("~/api/CanariasBlog/CommentForBlog/1/ExportAsCSV/{ExportationType}")]
         public IActionResult ExportAsCSV([FromBody] Ajax Ajax, string ExportationType)
         {
             try

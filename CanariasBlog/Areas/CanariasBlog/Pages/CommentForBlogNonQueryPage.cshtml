@@ -36,7 +36,7 @@
         Comment = CommentForBlogModel.Comment;
         BlogId = CommentForBlogModel.BlogId;
 
-        BlogModel BlogModel = new BlogModel(CommentForBlogModel.BlogId, "en");
+        BlogModel BlogModel = new BlogModel(CommentForBlogModel.BlogId);
         BlogTitle = BlogModel.Title;
     }
 
@@ -99,13 +99,13 @@
                 <div class="col-lg-6 col-5 text-right">
                     <!-- XL Screens -->
                     <div class="d-none d-xl-inline">
-                        <a href="/FiyiStack/CommentForBlogQueryPage" class="btn btn-secondary">
+                        <a href="/CanariasBlog/CommentForBlogQueryPage" class="btn btn-secondary">
                             <i class="fas fa-angle-left"></i> Go back
                         </a>
                     </div>
                     <!-- Other Screens -->
                     <div class="d-inline d-sm-inline d-md-inline d-lg-inline d-xl-none">
-                        <a href="/FiyiStack/CommentForBlogQueryPage" class="btn btn-secondary">
+                        <a href="/CanariasBlog/CommentForBlogQueryPage" class="btn btn-secondary">
                             <i class="fas fa-angle-left"></i>
                         </a>
                     </div>
@@ -180,7 +180,7 @@
                                     <i class="@NonQueryIcon"></i> 
                                     @NonQueryText
                             </button>
-                            <a href="/FiyiStack/CommentForBlogQueryPage" 
+                            <a href="/CanariasBlog/CommentForBlogQueryPage" 
                                 class="btn btn-outline-primary col-auto mr-3 mt-4 text-nowrap">
                                     <i class="fas fa-angle-left"></i> 
                                     Go back
@@ -268,4 +268,4 @@
 
 <script src="/js/BasicCore/jquery-3.6.1.min.js"></script>
 <script src="/assets/vendor/quill/dist/quill.min.js"></script>
-<script src="/js/FiyiStack/CommentForBlog/jQuery/CommentForBlogNonQuery_jQuery.js"></script>
+<script src="/js/CanariasBlog/CommentForBlog/jQuery/CommentForBlogNonQuery_jQuery.js"></script>

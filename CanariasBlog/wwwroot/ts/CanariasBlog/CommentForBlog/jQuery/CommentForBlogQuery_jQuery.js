@@ -53,61 +53,61 @@ var CommentForBlogQuery = /** @class */ (function () {
                     TotalRows = (_f = response_commentforblogQuery.TotalRows) !== null && _f !== void 0 ? _f : 0;
                     TotalPages = (_g = response_commentforblogQuery.TotalPages) !== null && _g !== void 0 ? _g : 0;
                     //Query string
-                    $("#fiyistack-commentforblog-query-string").attr("placeholder", "Search... (".concat(TotalRows, " records)"));
+                    $("#canariasblog-commentforblog-query-string").attr("placeholder", "Search... (".concat(TotalRows, " records)"));
                     //Total pages of pagination
-                    $("#fiyistack-commentforblog-total-pages-lg, #fiyistack-commentforblog-total-pages").html(TotalPages.toString());
+                    $("#canariasblog-commentforblog-total-pages-lg, #fiyistack-commentforblog-total-pages").html(TotalPages.toString());
                     //Actual page number of pagination
-                    $("#fiyistack-commentforblog-actual-page-number-lg, #fiyistack-commentforblog-actual-page-number").html(ActualPageNumber.toString());
+                    $("#canariasblog-commentforblog-actual-page-number-lg, #fiyistack-commentforblog-actual-page-number").html(ActualPageNumber.toString());
                     //If we are at the final of book disable next and last buttons in pagination
                     if (ActualPageNumber === TotalPages) {
-                        $("#fiyistack-commentforblog-lnk-next-page-lg, #fiyistack-commentforblog-lnk-next-page").attr("disabled", "disabled");
-                        $("#fiyistack-commentforblog-lnk-last-page-lg, #fiyistack-commentforblog-lnk-last-page").attr("disabled", "disabled");
-                        $("#fiyistack-commentforblog-search-more-button-in-list").html("");
+                        $("#canariasblog-commentforblog-lnk-next-page-lg, #fiyistack-commentforblog-lnk-next-page").attr("disabled", "disabled");
+                        $("#canariasblog-commentforblog-lnk-last-page-lg, #fiyistack-commentforblog-lnk-last-page").attr("disabled", "disabled");
+                        $("#canariasblog-commentforblog-search-more-button-in-list").html("");
                     }
                     else {
-                        $("#fiyistack-commentforblog-lnk-next-page-lg, #fiyistack-commentforblog-lnk-next-page").removeAttr("disabled");
-                        $("#fiyistack-commentforblog-lnk-last-page-lg, #fiyistack-commentforblog-lnk-last-page").removeAttr("disabled");
+                        $("#canariasblog-commentforblog-lnk-next-page-lg, #fiyistack-commentforblog-lnk-next-page").removeAttr("disabled");
+                        $("#canariasblog-commentforblog-lnk-last-page-lg, #fiyistack-commentforblog-lnk-last-page").removeAttr("disabled");
                         //Scroll arrow for list view
-                        $("#fiyistack-commentforblog-search-more-button-in-list").html("<i class='fas fa-2x fa-chevron-down'></i>");
+                        $("#canariasblog-commentforblog-search-more-button-in-list").html("<i class='fas fa-2x fa-chevron-down'></i>");
                     }
                     //If we are at the begining of the book disable previous and first buttons in pagination
                     if (ActualPageNumber === 1) {
-                        $("#fiyistack-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").attr("disabled", "disabled");
-                        $("#fiyistack-commentforblog-lnk-first-page-lg, #fiyistack-commentforblog-lnk-first-page").attr("disabled", "disabled");
+                        $("#canariasblog-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").attr("disabled", "disabled");
+                        $("#canariasblog-commentforblog-lnk-first-page-lg, #fiyistack-commentforblog-lnk-first-page").attr("disabled", "disabled");
                     }
                     else {
-                        $("#fiyistack-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").removeAttr("disabled");
-                        $("#fiyistack-commentforblog-lnk-first-page-lg, #fiyistack-commentforblog-lnk-first-page").removeAttr("disabled");
+                        $("#canariasblog-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").removeAttr("disabled");
+                        $("#canariasblog-commentforblog-lnk-first-page-lg, #fiyistack-commentforblog-lnk-first-page").removeAttr("disabled");
                     }
                     //If book is empty set to default pagination values
                     if (((_h = response_commentforblogQuery === null || response_commentforblogQuery === void 0 ? void 0 : response_commentforblogQuery.lstCommentForBlogModel) === null || _h === void 0 ? void 0 : _h.length) === 0) {
-                        $("#fiyistack-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").attr("disabled", "disabled");
-                        $("#fiyistack-commentforblog-lnk-first-page-lg, #fiyistack-commentforblog-lnk-first-page").attr("disabled", "disabled");
-                        $("#fiyistack-commentforblog-lnk-next-page-lg, #fiyistack-commentforblog-lnk-next-page").attr("disabled", "disabled");
-                        $("#fiyistack-commentforblog-lnk-last-page-lg, #fiyistack-commentforblog-lnk-last-page").attr("disabled", "disabled");
-                        $("#fiyistack-commentforblog-total-pages-lg, #fiyistack-commentforblog-total-pages").html("1");
-                        $("#fiyistack-commentforblog-actual-page-number-lg, #fiyistack-commentforblog-actual-page-number").html("1");
+                        $("#canariasblog-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").attr("disabled", "disabled");
+                        $("#canariasblog-commentforblog-lnk-first-page-lg, #fiyistack-commentforblog-lnk-first-page").attr("disabled", "disabled");
+                        $("#canariasblog-commentforblog-lnk-next-page-lg, #fiyistack-commentforblog-lnk-next-page").attr("disabled", "disabled");
+                        $("#canariasblog-commentforblog-lnk-last-page-lg, #fiyistack-commentforblog-lnk-last-page").attr("disabled", "disabled");
+                        $("#canariasblog-commentforblog-total-pages-lg, #fiyistack-commentforblog-total-pages").html("1");
+                        $("#canariasblog-commentforblog-actual-page-number-lg, #fiyistack-commentforblog-actual-page-number").html("1");
                     }
                     //Read data book
                     (_j = response_commentforblogQuery === null || response_commentforblogQuery === void 0 ? void 0 : response_commentforblogQuery.lstCommentForBlogModel) === null || _j === void 0 ? void 0 : _j.forEach(function (row) {
-                        TableContent += "<tr>\n    <!-- Checkbox -->\n    <td>\n        <div>\n            <input class=\"commentforblog-table-checkbox-for-row\" value=\"".concat(row.CommentForBlogId, "\" type=\"checkbox\">\n        </div>\n    </td>\n    <!-- Data -->\n    <td class=\"text-left text-light\">\n        <i class=\"fas fa-key\"></i> ").concat(row.CommentForBlogId, "\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-toggle-on\"></i> ").concat(row.Active == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>", "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-calendar\"></i> ").concat(row.DateTimeCreation, "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-calendar\"></i> ").concat(row.DateTimeLastModification, "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-key\"></i> ").concat(row.UserCreationIdFantasyName, "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-key\"></i> ").concat(row.UserLastModificationIdFantasyName, "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-font\"></i> ").concat(row.Comment, "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-key\"></i> ").concat(row.BlogIdTitle, "\n        </strong>\n    </td>\n    \n    <!-- Actions -->\n    <td class=\"text-right\">\n        <a class=\"btn btn-icon-only text-primary\" href=\"/FiyiStack/CommentForBlogNonQueryPage?CommentForBlogId=").concat(row.CommentForBlogId, "\" role=\"button\" data-toggle=\"tooltip\" data-original-title=\"Edit\">\n            <i class=\"fas fa-edit\"></i>\n        </a>\n        <div class=\"dropdown\">\n            <button class=\"btn btn-icon-only text-danger\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                <i class=\"fas fa-trash\"></i>\n            </button>\n            <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">\n                <button class=\"dropdown-item text-danger fiyistack-commentforblog-table-delete-button\" value=\"").concat(row.CommentForBlogId, "\" type=\"button\">\n                    <i class=\"fas fa-exclamation-triangle\"></i> Yes, delete\n                </button>\n            </div>\n        </div>\n        <div class=\"dropdown\">\n            <button class=\"btn btn-sm btn-icon-only text-primary\" href=\"#\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                <i class=\"fas fa-ellipsis-v\"></i>\n            </button>\n            <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">\n                <button type=\"button\" class=\"dropdown-item fiyistack-commentforblog-table-copy-button\" value=\"").concat(row.CommentForBlogId, "\">\n                    <i class=\"fas fa-copy text-primary\"></i>&nbsp;Copy\n                </button>\n            </div>\n        </div>\n    </td>\n</tr>");
-                        ListContent += "<div class=\"row mx-2\">\n    <div class=\"col-sm\">\n        <div class=\"card bg-gradient-primary mb-2\">\n            <div class=\"card-body\">\n                <div class=\"row\">\n                    <div class=\"col text-truncate\">\n                        <span class=\"text-white text-light mb-4\">\n                           Comment For Blog ID <i class=\"fas fa-key\"></i> ".concat(row.CommentForBlogId, "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           Active <i class=\"fas fa-toggle-on\"></i> ").concat(row.Active == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>", "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           Date Time Creation <i class=\"fas fa-calendar\"></i> ").concat(row.DateTimeCreation, "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           Date Time Last Modification <i class=\"fas fa-calendar\"></i> ").concat(row.DateTimeLastModification, "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           User Creation <i class=\"fas fa-key\"></i> ").concat(row.UserCreationIdFantasyName, "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           User Last Modification <i class=\"fas fa-key\"></i> ").concat(row.UserLastModificationIdFantasyName, "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           Comment <i class=\"fas fa-font\"></i> ").concat(row.Comment, "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           Blog <i class=\"fas fa-key\"></i> ").concat(row.BlogIdTitle, "\n                        </span>\n                        <br/>\n                        \n                    </div>\n                    <div class=\"col-auto\">\n                    </div>\n                </div>\n                <!-- Actions -->\n                <div class=\"row\">\n                    <div class=\"col\">\n                        <div class=\"justify-content-end text-right mt-2\">\n                            <div class=\"mb-2\">\n                                <a class=\"fiyistack-commentforblog-checkbox-list list-row-unchecked icon icon-shape bg-white icon-sm rounded-circle shadow\" href=\"javascript:void(0)\" role=\"button\" data-toggle=\"tooltip\" data-original-title=\"Check\">\n                                    <i class=\"fas fa-circle text-white\"></i>\n                                </a>\n                                <input type=\"hidden\" value=\"").concat(row.CommentForBlogId, "\"/>\n                            </div>\n                            <a class=\"icon icon-shape bg-white icon-sm rounded-circle shadow\" href=\"/FiyiStack/CommentForBlogNonQueryPage?CommentForBlogId=").concat(row.CommentForBlogId, "\" role=\"button\" data-toggle=\"tooltip\" data-original-title=\"edit\">\n                                <i class=\"fas fa-edit text-primary\"></i>\n                            </a>\n                            <div class=\"dropup\">\n                                <a class=\"icon icon-shape bg-white icon-sm text-primary rounded-circle shadow\" href=\"javascript:void(0)\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                                    <i class=\"fas fa-ellipsis-v\"></i>\n                                </a>\n                                <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">\n                                    <button value=\"").concat(row.CommentForBlogId, "\" class=\"dropdown-item text-primary fiyistack-commentforblog-list-copy-button\" type=\"button\">\n                                        <i class=\"fas fa-copy\"></i>&nbsp;Copy\n                                    </button>\n                                    <button value=\"").concat(row.CommentForBlogId, "\" class=\"dropdown-item text-danger fiyistack-commentforblog-list-delete-button\" type=\"button\">\n                                        <i class=\"fas fa-trash\"></i>&nbsp;Delete\n                                    </button>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>");
+                        TableContent += "<tr>\n    <!-- Checkbox -->\n    <td>\n        <div>\n            <input class=\"commentforblog-table-checkbox-for-row\" value=\"".concat(row.CommentForBlogId, "\" type=\"checkbox\">\n        </div>\n    </td>\n    <!-- Data -->\n    <td class=\"text-left text-light\">\n        <i class=\"fas fa-key\"></i> ").concat(row.CommentForBlogId, "\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-toggle-on\"></i> ").concat(row.Active == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>", "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-calendar\"></i> ").concat(row.DateTimeCreation, "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-calendar\"></i> ").concat(row.DateTimeLastModification, "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-key\"></i> ").concat(row.UserCreationIdFantasyName, "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-key\"></i> ").concat(row.UserLastModificationIdFantasyName, "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-font\"></i> ").concat(row.Comment, "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-key\"></i> ").concat(row.BlogIdTitle, "\n        </strong>\n    </td>\n    \n    <!-- Actions -->\n    <td class=\"text-right\">\n        <a class=\"btn btn-icon-only text-primary\" href=\"/CanariasBlog/CommentForBlogNonQueryPage?CommentForBlogId=").concat(row.CommentForBlogId, "\" role=\"button\" data-toggle=\"tooltip\" data-original-title=\"Edit\">\n            <i class=\"fas fa-edit\"></i>\n        </a>\n        <div class=\"dropdown\">\n            <button class=\"btn btn-icon-only text-danger\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                <i class=\"fas fa-trash\"></i>\n            </button>\n            <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">\n                <button class=\"dropdown-item text-danger fiyistack-commentforblog-table-delete-button\" value=\"").concat(row.CommentForBlogId, "\" type=\"button\">\n                    <i class=\"fas fa-exclamation-triangle\"></i> Yes, delete\n                </button>\n            </div>\n        </div>\n        <div class=\"dropdown\">\n            <button class=\"btn btn-sm btn-icon-only text-primary\" href=\"#\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                <i class=\"fas fa-ellipsis-v\"></i>\n            </button>\n            <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">\n                <button type=\"button\" class=\"dropdown-item fiyistack-commentforblog-table-copy-button\" value=\"").concat(row.CommentForBlogId, "\">\n                    <i class=\"fas fa-copy text-primary\"></i>&nbsp;Copy\n                </button>\n            </div>\n        </div>\n    </td>\n</tr>");
+                        ListContent += "<div class=\"row mx-2\">\n    <div class=\"col-sm\">\n        <div class=\"card bg-gradient-primary mb-2\">\n            <div class=\"card-body\">\n                <div class=\"row\">\n                    <div class=\"col text-truncate\">\n                        <span class=\"text-white text-light mb-4\">\n                           Comment For Blog ID <i class=\"fas fa-key\"></i> ".concat(row.CommentForBlogId, "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           Active <i class=\"fas fa-toggle-on\"></i> ").concat(row.Active == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>", "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           Date Time Creation <i class=\"fas fa-calendar\"></i> ").concat(row.DateTimeCreation, "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           Date Time Last Modification <i class=\"fas fa-calendar\"></i> ").concat(row.DateTimeLastModification, "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           User Creation <i class=\"fas fa-key\"></i> ").concat(row.UserCreationIdFantasyName, "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           User Last Modification <i class=\"fas fa-key\"></i> ").concat(row.UserLastModificationIdFantasyName, "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           Comment <i class=\"fas fa-font\"></i> ").concat(row.Comment, "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           Blog <i class=\"fas fa-key\"></i> ").concat(row.BlogIdTitle, "\n                        </span>\n                        <br/>\n                        \n                    </div>\n                    <div class=\"col-auto\">\n                    </div>\n                </div>\n                <!-- Actions -->\n                <div class=\"row\">\n                    <div class=\"col\">\n                        <div class=\"justify-content-end text-right mt-2\">\n                            <div class=\"mb-2\">\n                                <a class=\"fiyistack-commentforblog-checkbox-list list-row-unchecked icon icon-shape bg-white icon-sm rounded-circle shadow\" href=\"javascript:void(0)\" role=\"button\" data-toggle=\"tooltip\" data-original-title=\"Check\">\n                                    <i class=\"fas fa-circle text-white\"></i>\n                                </a>\n                                <input type=\"hidden\" value=\"").concat(row.CommentForBlogId, "\"/>\n                            </div>\n                            <a class=\"icon icon-shape bg-white icon-sm rounded-circle shadow\" href=\"/CanariasBlog/CommentForBlogNonQueryPage?CommentForBlogId=").concat(row.CommentForBlogId, "\" role=\"button\" data-toggle=\"tooltip\" data-original-title=\"edit\">\n                                <i class=\"fas fa-edit text-primary\"></i>\n                            </a>\n                            <div class=\"dropup\">\n                                <a class=\"icon icon-shape bg-white icon-sm text-primary rounded-circle shadow\" href=\"javascript:void(0)\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                                    <i class=\"fas fa-ellipsis-v\"></i>\n                                </a>\n                                <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">\n                                    <button value=\"").concat(row.CommentForBlogId, "\" class=\"dropdown-item text-primary fiyistack-commentforblog-list-copy-button\" type=\"button\">\n                                        <i class=\"fas fa-copy\"></i>&nbsp;Copy\n                                    </button>\n                                    <button value=\"").concat(row.CommentForBlogId, "\" class=\"dropdown-item text-danger fiyistack-commentforblog-list-delete-button\" type=\"button\">\n                                        <i class=\"fas fa-trash\"></i>&nbsp;Delete\n                                    </button>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>");
                     });
                     //If view table is activated, clear table view, if not, clear list view
                     if (ViewToggler === "Table") {
-                        $("#fiyistack-commentforblog-body-and-head-table").html("");
-                        $("#fiyistack-commentforblog-body-and-head-table").html(TableContent);
+                        $("#canariasblog-commentforblog-body-and-head-table").html("");
+                        $("#canariasblog-commentforblog-body-and-head-table").html(TableContent);
                     }
                     else {
                         //Used for list view
                         if (ScrollDownNSearchFlag) {
-                            $("#fiyistack-commentforblog-body-list").append(ListContent);
+                            $("#canariasblog-commentforblog-body-list").append(ListContent);
                             ScrollDownNSearchFlag = false;
                         }
                         else {
                             //Clear list view
-                            $("#fiyistack-commentforblog-body-list").html("");
-                            $("#fiyistack-commentforblog-body-list").html(ListContent);
+                            $("#canariasblog-commentforblog-body-list").html("");
+                            $("#canariasblog-commentforblog-body-list").html(ListContent);
                         }
                     }
                 }
@@ -221,7 +221,7 @@ function ValidateAndSearch() {
     CommentForBlogQuery.SelectAllPagedToHTML(_commentforblogSelectAllPaged);
 }
 //LOAD EVENT
-if ($("#fiyistack-commentforblog-title-page").html().includes("Query commentforblog")) {
+if ($("#canariasblog-commentforblog-title-page").html().includes("Query commentforblog")) {
     //Set to default values
     QueryString = "";
     ActualPageNumber = 1;
@@ -232,62 +232,62 @@ if ($("#fiyistack-commentforblog-title-page").html().includes("Query commentforb
     TotalPages = 0;
     ViewToggler = "List";
     //Disable first and previous links in pagination
-    $("#fiyistack-commentforblog-lnk-first-page-lg, #fiyistack-commentforblog-lnk-first-page").attr("disabled", "disabled");
-    $("#fiyistack-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").attr("disabled", "disabled");
+    $("#canariasblog-commentforblog-lnk-first-page-lg, #fiyistack-commentforblog-lnk-first-page").attr("disabled", "disabled");
+    $("#canariasblog-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").attr("disabled", "disabled");
     //Hide messages
-    $("#fiyistack-commentforblog-export-message").html("");
+    $("#canariasblog-commentforblog-export-message").html("");
     ValidateAndSearch();
 }
 //CLICK, SCROLL AND KEYBOARD EVENTS
 //Search button
-$($("#fiyistack-commentforblog-search-button")).on("click", function () {
+$($("#canariasblog-commentforblog-search-button")).on("click", function () {
     ValidateAndSearch();
 });
 //Query string
-$("#fiyistack-commentforblog-query-string").on("change keyup input", function (e) {
+$("#canariasblog-commentforblog-query-string").on("change keyup input", function (e) {
     var _a, _b;
     //If undefined, set QueryString to "" value
     QueryString = (_b = ((_a = $(this).val()) === null || _a === void 0 ? void 0 : _a.toString())) !== null && _b !== void 0 ? _b : "";
     ValidateAndSearch();
 });
 //First page link in pagination
-$("#fiyistack-commentforblog-lnk-first-page-lg, #fiyistack-commentforblog-lnk-first-page").on("click", function (e) {
+$("#canariasblog-commentforblog-lnk-first-page-lg, #fiyistack-commentforblog-lnk-first-page").on("click", function (e) {
     ActualPageNumber = 1;
     ValidateAndSearch();
 });
 //Previous page link in pagination
-$("#fiyistack-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").on("click", function (e) {
+$("#canariasblog-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").on("click", function (e) {
     ActualPageNumber -= 1;
     ValidateAndSearch();
 });
 //Next page link in pagination
-$("#fiyistack-commentforblog-lnk-next-page-lg, #fiyistack-commentforblog-lnk-next-page").on("click", function (e) {
+$("#canariasblog-commentforblog-lnk-next-page-lg, #fiyistack-commentforblog-lnk-next-page").on("click", function (e) {
     ActualPageNumber += 1;
     ValidateAndSearch();
 });
 //Last page link in pagination
-$("#fiyistack-commentforblog-lnk-last-page-lg, #fiyistack-commentforblog-lnk-last-page").on("click", function (e) {
+$("#canariasblog-commentforblog-lnk-last-page-lg, #fiyistack-commentforblog-lnk-last-page").on("click", function (e) {
     ActualPageNumber = TotalPages;
     ValidateAndSearch();
 });
 //Table view button
-$("#fiyistack-commentforblog-table-view-button").on("click", function (e) {
-    $("#fiyistack-commentforblog-view-toggler").val("Table");
+$("#canariasblog-commentforblog-table-view-button").on("click", function (e) {
+    $("#canariasblog-commentforblog-view-toggler").val("Table");
     ViewToggler = "Table";
     //Reset some values to default
     ActualPageNumber = 1;
     //Clear table view
-    $("#fiyistack-commentforblog-body-and-head-table").html("");
+    $("#canariasblog-commentforblog-body-and-head-table").html("");
     ValidateAndSearch();
 });
 //List view button
-$("#fiyistack-commentforblog-list-view-button").on("click", function (e) {
-    $("#fiyistack-commentforblog-view-toggler").val("List");
+$("#canariasblog-commentforblog-list-view-button").on("click", function (e) {
+    $("#canariasblog-commentforblog-view-toggler").val("List");
     ViewToggler = "List";
     //Reset some values to default
     ActualPageNumber = 1;
     //Clear list view
-    $("#fiyistack-commentforblog-body-list").html("");
+    $("#canariasblog-commentforblog-body-list").html("");
     ValidateAndSearch();
 });
 //Used to list view
@@ -295,8 +295,8 @@ function ScrollDownNSearch() {
     var _a, _b, _c, _d, _e, _f, _g, _h;
     var WindowsTopDistance = (_a = $(window).scrollTop()) !== null && _a !== void 0 ? _a : 0;
     var WindowsBottomDistance = ((_b = $(window).scrollTop()) !== null && _b !== void 0 ? _b : 0) + ((_c = $(window).innerHeight()) !== null && _c !== void 0 ? _c : 0);
-    var CardsFooterTopPosition = (_e = (_d = $("#fiyistack-commentforblog-search-more-button-in-list").offset()) === null || _d === void 0 ? void 0 : _d.top) !== null && _e !== void 0 ? _e : 0;
-    var CardsFooterBottomPosition = ((_g = (_f = $("#fiyistack-commentforblog-search-more-button-in-list").offset()) === null || _f === void 0 ? void 0 : _f.top) !== null && _g !== void 0 ? _g : 0) + ((_h = $("#fiyistack-commentforblog-search-more-button-in-list").outerHeight()) !== null && _h !== void 0 ? _h : 0);
+    var CardsFooterTopPosition = (_e = (_d = $("#canariasblog-commentforblog-search-more-button-in-list").offset()) === null || _d === void 0 ? void 0 : _d.top) !== null && _e !== void 0 ? _e : 0;
+    var CardsFooterBottomPosition = ((_g = (_f = $("#canariasblog-commentforblog-search-more-button-in-list").offset()) === null || _f === void 0 ? void 0 : _f.top) !== null && _g !== void 0 ? _g : 0) + ((_h = $("#canariasblog-commentforblog-search-more-button-in-list").outerHeight()) !== null && _h !== void 0 ? _h : 0);
     if (WindowsTopDistance > LastTopDistance) {
         //Scroll down
         if ((WindowsBottomDistance > CardsFooterTopPosition) && (WindowsTopDistance < CardsFooterBottomPosition)) {
@@ -315,7 +315,7 @@ function ScrollDownNSearch() {
 //Used to list view
 $(window).on("scroll", ScrollDownNSearch);
 //Export as PDF button
-$("#fiyistack-commentforblog-export-as-pdf").on("click", function (e) {
+$("#canariasblog-commentforblog-export-as-pdf").on("click", function (e) {
     //There are two exportation types, All and JustChecked
     var ExportationType = "";
     var DateTimeNow;
@@ -325,7 +325,7 @@ $("#fiyistack-commentforblog-export-as-pdf").on("click", function (e) {
         'Accept': 'application/json',
         'Content-Type': 'application/json; charset=utf-8'
     };
-    if ($("#fiyistack-commentforblog-export-rows-all-checkbox").is(":checked")) {
+    if ($("#canariasblog-commentforblog-export-rows-all-checkbox").is(":checked")) {
         ExportationType = "All";
     }
     else {
@@ -349,9 +349,9 @@ $("#fiyistack-commentforblog-export-as-pdf").on("click", function (e) {
             };
         }
     }
-    Rx.from(ajax_1.ajax.post("/api/FiyiStack/CommentForBlog/1/ExportAsPDF/" + ExportationType, Body, Header)).subscribe({
+    Rx.from(ajax_1.ajax.post("/api/CanariasBlog/CommentForBlog/1/ExportAsPDF/" + ExportationType, Body, Header)).subscribe({
         next: function (newrow) {
-            $("#fiyistack-commentforblog-export-message").html("<strong>Exporting as PDF</strong>");
+            $("#canariasblog-commentforblog-export-message").html("<strong>Exporting as PDF</strong>");
             DateTimeNow = newrow.response;
         },
         complete: function () {
@@ -359,7 +359,7 @@ $("#fiyistack-commentforblog-export-as-pdf").on("click", function (e) {
             // @ts-ignore
             $.notify({ icon: "fas fa-check", message: "Conversion completed" }, { type: "success", placement: { from: "bottom", align: "center" } });
             //Show download button for PDF file
-            $("#fiyistack-commentforblog-export-message").html("<a class=\"btn btn-icon btn-success\" href=\"/PDFFiles/FiyiStack/CommentForBlog/CommentForBlog_".concat(DateTimeNow.AjaxForString, ".pdf\" type=\"button\" download>\n                                            <span class=\"btn-inner--icon\"><i class=\"fas fa-file-pdf\"></i></span>\n                                            <span class=\"btn-inner--text\">Download</span>\n                                        </a>"));
+            $("#canariasblog-commentforblog-export-message").html("<a class=\"btn btn-icon btn-success\" href=\"/PDFFiles/CanariasBlog/CommentForBlog/CommentForBlog_".concat(DateTimeNow.AjaxForString, ".pdf\" type=\"button\" download>\n                                            <span class=\"btn-inner--icon\"><i class=\"fas fa-file-pdf\"></i></span>\n                                            <span class=\"btn-inner--text\">Download</span>\n                                        </a>"));
         },
         error: function (err) {
             //ERROR
@@ -370,7 +370,7 @@ $("#fiyistack-commentforblog-export-as-pdf").on("click", function (e) {
     });
 });
 //Export as Excel button
-$("#fiyistack-commentforblog-export-as-excel").on("click", function (e) {
+$("#canariasblog-commentforblog-export-as-excel").on("click", function (e) {
     //There are two exportation types, All and JustChecked
     var ExportationType = "";
     var DateTimeNow;
@@ -380,7 +380,7 @@ $("#fiyistack-commentforblog-export-as-excel").on("click", function (e) {
         'Accept': 'application/json',
         'Content-Type': 'application/json; charset=utf-8'
     };
-    if ($("#fiyistack-commentforblog-export-rows-all-checkbox").is(":checked")) {
+    if ($("#canariasblog-commentforblog-export-rows-all-checkbox").is(":checked")) {
         ExportationType = "All";
     }
     else {
@@ -404,9 +404,9 @@ $("#fiyistack-commentforblog-export-as-excel").on("click", function (e) {
             };
         }
     }
-    Rx.from(ajax_1.ajax.post("/api/FiyiStack/CommentForBlog/1/ExportAsExcel/" + ExportationType, Body, Header)).subscribe({
+    Rx.from(ajax_1.ajax.post("/api/CanariasBlog/CommentForBlog/1/ExportAsExcel/" + ExportationType, Body, Header)).subscribe({
         next: function (newrow) {
-            $("#fiyistack-commentforblog-export-message").html("<strong>Exporting as Excel</strong>");
+            $("#canariasblog-commentforblog-export-message").html("<strong>Exporting as Excel</strong>");
             DateTimeNow = newrow.response;
         },
         complete: function () {
@@ -414,7 +414,7 @@ $("#fiyistack-commentforblog-export-as-excel").on("click", function (e) {
             // @ts-ignore
             $.notify({ icon: "fas fa-check", message: "Conversion completed" }, { type: "success", placement: { from: "bottom", align: "center" } });
             //Show download button for Excel file
-            $("#fiyistack-commentforblog-export-message").html("<a class=\"btn btn-icon btn-success\" href=\"/ExcelFiles/FiyiStack/CommentForBlog/CommentForBlog_".concat(DateTimeNow.AjaxForString, ".xlsx\" type=\"button\" download>\n                                            <span class=\"btn-inner--icon\"><i class=\"fas fa-file-excel\"></i></span>\n                                            <span class=\"btn-inner--text\">Download</span>\n                                        </a>"));
+            $("#canariasblog-commentforblog-export-message").html("<a class=\"btn btn-icon btn-success\" href=\"/ExcelFiles/CanariasBlog/CommentForBlog/CommentForBlog_".concat(DateTimeNow.AjaxForString, ".xlsx\" type=\"button\" download>\n                                            <span class=\"btn-inner--icon\"><i class=\"fas fa-file-excel\"></i></span>\n                                            <span class=\"btn-inner--text\">Download</span>\n                                        </a>"));
         },
         error: function (err) {
             //ERROR
@@ -425,7 +425,7 @@ $("#fiyistack-commentforblog-export-as-excel").on("click", function (e) {
     });
 });
 //Export as CSV button
-$("#fiyistack-commentforblog-export-as-csv").on("click", function (e) {
+$("#canariasblog-commentforblog-export-as-csv").on("click", function (e) {
     //There are two exportation types, All and JustChecked
     var ExportationType = "";
     var DateTimeNow;
@@ -435,7 +435,7 @@ $("#fiyistack-commentforblog-export-as-csv").on("click", function (e) {
         'Accept': 'application/json',
         'Content-Type': 'application/json; charset=utf-8'
     };
-    if ($("#fiyistack-commentforblog-export-rows-all-checkbox").is(":checked")) {
+    if ($("#canariasblog-commentforblog-export-rows-all-checkbox").is(":checked")) {
         ExportationType = "All";
     }
     else {
@@ -459,9 +459,9 @@ $("#fiyistack-commentforblog-export-as-csv").on("click", function (e) {
             };
         }
     }
-    Rx.from(ajax_1.ajax.post("/api/FiyiStack/CommentForBlog/1/ExportAsCSV/" + ExportationType, Body, Header)).subscribe({
+    Rx.from(ajax_1.ajax.post("/api/CanariasBlog/CommentForBlog/1/ExportAsCSV/" + ExportationType, Body, Header)).subscribe({
         next: function (newrow) {
-            $("#fiyistack-commentforblog-export-message").html("<strong>Exporting as CSV</strong>");
+            $("#canariasblog-commentforblog-export-message").html("<strong>Exporting as CSV</strong>");
             DateTimeNow = newrow.response;
         },
         complete: function () {
@@ -469,7 +469,7 @@ $("#fiyistack-commentforblog-export-as-csv").on("click", function (e) {
             // @ts-ignore
             $.notify({ icon: "fas fa-check", message: "Conversion completed" }, { type: "success", placement: { from: "bottom", align: "center" } });
             //Show download button for CSV file
-            $("#fiyistack-commentforblog-export-message").html("<a class=\"btn btn-icon btn-success\" href=\"/CSVFiles/FiyiStack/CommentForBlog/CommentForBlog_".concat(DateTimeNow.AjaxForString, ".csv\" type=\"button\" download>\n                                            <span class=\"btn-inner--icon\"><i class=\"fas fa-file-csv\"></i></span>\n                                            <span class=\"btn-inner--text\">Download</span>\n                                        </a>"));
+            $("#canariasblog-commentforblog-export-message").html("<a class=\"btn btn-icon btn-success\" href=\"/CSVFiles/CanariasBlog/CommentForBlog/CommentForBlog_".concat(DateTimeNow.AjaxForString, ".csv\" type=\"button\" download>\n                                            <span class=\"btn-inner--icon\"><i class=\"fas fa-file-csv\"></i></span>\n                                            <span class=\"btn-inner--text\">Download</span>\n                                        </a>"));
         },
         error: function (err) {
             //ERROR
@@ -480,15 +480,15 @@ $("#fiyistack-commentforblog-export-as-csv").on("click", function (e) {
     });
 });
 //Export close button in modal
-$("#fiyistack-commentforblog-export-close-button").on("click", function (e) {
-    $("#fiyistack-commentforblog-export-message").html("");
+$("#canariasblog-commentforblog-export-close-button").on("click", function (e) {
+    $("#canariasblog-commentforblog-export-message").html("");
 });
 //Massive action Copy
-$("#fiyistack-commentforblog-massive-action-copy").on("click", function (e) {
+$("#canariasblog-commentforblog-massive-action-copy").on("click", function (e) {
     //There are two deletion types, All and JustChecked
     var CopyType = "";
     var Body = {};
-    if ($("#fiyistack-commentforblog-copy-rows-all-checkbox").is(":checked")) {
+    if ($("#canariasblog-commentforblog-copy-rows-all-checkbox").is(":checked")) {
         CopyType = "All";
     }
     else {
@@ -527,11 +527,11 @@ $("#fiyistack-commentforblog-massive-action-copy").on("click", function (e) {
     });
 });
 //Massive action Delete
-$("#fiyistack-commentforblog-massive-action-delete").on("click", function (e) {
+$("#canariasblog-commentforblog-massive-action-delete").on("click", function (e) {
     //There are two deletion types, All and JustChecked
     var DeleteType = "";
     var Body = {};
-    if ($("#fiyistack-commentforblog-copy-rows-all-checkbox").is(":checked")) {
+    if ($("#canariasblog-commentforblog-copy-rows-all-checkbox").is(":checked")) {
         DeleteType = "All";
     }
     else {

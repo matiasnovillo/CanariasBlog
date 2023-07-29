@@ -2,7 +2,7 @@
 import { BlogModel } from "../../Blog/TsModels/Blog_TsModel";
 import { blogSelectAllPaged } from "../DTOs/blogSelectAllPaged";
 import * as $ from "jquery";
-var numeral = require('numeral');
+import { format } from "timeago.js";
 
 //Set default values
 let LastTopDistance: number = 0;
@@ -15,7 +15,6 @@ let TotalPages: number = 0;
 let TotalRows: number = 0;
 let ViewToggler: string = "List";
 let ScrollDownNSearchFlag: boolean = false;
-let Idiom = "en";
 
 class BlogQuery {
     static SelectAllPagedToHTML(request_blogSelectAllPaged: blogSelectAllPaged) {
@@ -40,30 +39,26 @@ class BlogQuery {
                         SortToggler = response_blogQuery.SortToggler ?? false;
                         TotalRows = response_blogQuery.TotalRows ?? 0;
                         TotalPages = response_blogQuery.TotalPages ?? 0;
-                        Idiom = response_blogQuery.Idiom ?? "en";
 
                         //Query string
-                        $("#fiyistack-blog-query-string").attr("placeholder", `Search... (${TotalRows} posts)`);
+                        $("#canariasblog-blog-query-string").attr("placeholder", `Search... (${TotalRows} posts)`);
                         //If we are at the final of book disable next and last buttons in pagination
                         if (ActualPageNumber === TotalPages) {
-                            $("#fiyistack-blog-search-more-button-in-list").html("");
+                            $("#canariasblog-blog-search-more-button-in-list").html("");
                         }
                         else {
                             //Scroll arrow for list view
-                            $("#fiyistack-blog-search-more-button-in-list").html("<i class='fas fa-2x fa-chevron-down'></i>");
+                            $("#canariasblog-blog-search-more-button-in-list").html("<i class='fas fa-2x fa-chevron-down'></i>");
                         }
                         
                         response_blogQuery?.lstBlogModel?.forEach(row => {
 
-
-                            //Read data book
-                            if (Idiom == "en") {
-                                ListContent += `
+                            ListContent += `
 <div class="card card-blog card-plain blog-horizontal mb-5">
     <div class="row">
         <div class="col-lg-4">
             <div class="card-image">
-                <a href="/en/BlogPost/${row.BlogId}">
+                <a href="/BlogPost/${row.BlogId}">
                     <img class="img rounded" src="${row.BackgroundImage}" />
                 </a>
             </div>
@@ -71,14 +66,14 @@ class BlogQuery {
         <div class="col-lg-8">
             <div class="card-body">
                 <h3 class="card-title">
-                    <a class="text-default" href="/en/BlogPost/${row.BlogId}">${row.Title}</a>
+                    <a class="text-default" href="/BlogPost/${row.BlogId}">${row.Title}</a>
                 </h3>
                 <p class="card-description">
-                    ${row.Body?.toString().substring(0, 160)} <a class="text-default" href="/en/BlogPost/${row.BlogId}"> Read More </a>
+                    ${row.Body?.toString().substring(0, 160)} <a class="text-default" href="/BlogPost/${row.BlogId}"> Read More </a>
                 </p>
                 <div class="row">
                     <div class="col-2">
-                        <img src="/img/FiyiStack/Me.jpg" alt="MatiasNovillo" class="avatar img-raised">
+                        <img src="/img/CanariasBlog/Me.jpg" alt="MatiasNovillo" class="avatar img-raised">
                     </div>
                     <div class="col-10">
                         <div class="author">
@@ -87,9 +82,9 @@ class BlogQuery {
                                     Matias Novillo - Full Stack Web Developer
                                 </span>
                                 <div class="meta">
-                                    ${Date.parse(row.DateTimeLastModification)} -
-                                    ${numeral(row.NumberOfLikes).format('0,0.')} likes -
-                                    ${numeral(row.NumberOfComments).format('0,0.')} comments
+                                    ${format(Date.parse(row.DateTimeLastModification))} -
+                                    ${row.NumberOfLikes} likes -
+                                    ${row.NumberOfComments} comments
                                 </div>
                             </div>
                         </div>
@@ -99,50 +94,6 @@ class BlogQuery {
         </div>
     </div>
 </div>`;
-                            }
-                            else {
-                                ListContent += `
-<div class="card card-blog card-plain blog-horizontal mb-5">
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="card-image">
-                <a href="/es/BlogPost/${row.BlogId}">
-                    <img class="img rounded" src="${row.BackgroundImage}" />
-                </a>
-            </div>
-        </div>
-        <div class="col-lg-8">
-            <div class="card-body">
-                <h3 class="card-title">
-                    <a class="text-default" href="/es/BlogPost/${row.BlogId}">${row.Title}</a>
-                </h3>
-                <p class="card-description">
-                    ${row.Body?.toString().substring(0, 160)} <a class="text-default" href="/es/BlogPost/${row.BlogId}"> Read More </a>
-                </p>
-                <div class="row">
-                    <div class="col-2">
-                        <img src="/img/FiyiStack/Me.jpg" alt="MatiasNovillo" class="avatar img-raised">
-                    </div>
-                    <div class="col-10">
-                        <div class="author">
-                            <div class="text">
-                                <span class="name">
-                                    Matias Novillo - Full Stack Web Developer
-                                </span>
-                                <div class="meta">
-                                    ${Date.parse(row.DateTimeLastModification)} -
-                                    ${numeral(row.NumberOfLikes).format('0,0.')} likes -
-                                    ${numeral(row.NumberOfComments).format('0,0.')} comments
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>`;
-                            }
                         })
 
                         //If view table is activated, clear table view, if not, clear list view
@@ -152,13 +103,13 @@ class BlogQuery {
                         else {
                             //Used for list view
                             if (ScrollDownNSearchFlag) {
-                                $("#fiyistack-blog-body-list").append(ListContent);
+                                $("#canariasblog-blog-body-list").append(ListContent);
                                 ScrollDownNSearchFlag = false;
                             }
                             else {
                                 //Clear list view
-                                $("#fiyistack-blog-body-list").html("");
-                                $("#fiyistack-blog-body-list").html(ListContent);
+                                $("#canariasblog-blog-body-list").html("");
+                                $("#canariasblog-blog-body-list").html(ListContent);
                             }
                             }
                     }
@@ -219,7 +170,7 @@ class BlogQuery {
                             }
                         };
                         //Open connection
-                        xmlHttpRequest.open("POST", "/api/FiyiStack/CommentForBlog/1/PostComment", true);
+                        xmlHttpRequest.open("POST", "/api/CanariasBlog/CommentForBlog/1/PostComment", true);
                         //Send request
                         xmlHttpRequest.send(formData);
                     });
@@ -241,15 +192,13 @@ function ValidateAndSearch() {
         SorterColumn,
         SortToggler,
         TotalRows,
-        TotalPages,
-        Idiom
+        TotalPages
     };
 
     BlogQuery.SelectAllPagedToHTML(_blogSelectAllPaged);
 }
 
-//LOAD EVENT
-if ($("#fiyistack-blog-title-page").html().includes("The FiyiStack blog")) {
+if ($("#canariasblog-blog-title-page").html().includes("The CanariasBlog")) {
     //Set to default values
     QueryString = "";
     ActualPageNumber = 1;
@@ -259,33 +208,18 @@ if ($("#fiyistack-blog-title-page").html().includes("The FiyiStack blog")) {
     TotalRows = 0;
     TotalPages = 0;
     ViewToggler = "List";
-    Idiom = "en";
-
-    ValidateAndSearch();
-}
-if ($("#fiyistack-blog-title-page").html().includes("El blog de FiyiStack")) {
-    //Set to default values
-    QueryString = "";
-    ActualPageNumber = 1;
-    RowsPerPage = 50;
-    SorterColumn = "DateTimeCreation";
-    SortToggler = true;
-    TotalRows = 0;
-    TotalPages = 0;
-    ViewToggler = "List";
-    Idiom = "es";
 
     ValidateAndSearch();
 }
 
 //CLICK, SCROLL AND KEYBOARD EVENTS
 //Search button
-$($("#fiyistack-blog-search-button")).on("click", function () {
+$($("#canariasblog-blog-search-button")).on("click", function () {
     ValidateAndSearch();
 });
 
 //Query string
-$("#fiyistack-blog-query-string").on("change keyup input", function (e) {
+$("#canariasblog-blog-query-string").on("change keyup input", function (e) {
     //If undefined, set QueryString to "" value
     QueryString = ($(this).val()?.toString()) ?? "" ;
     ValidateAndSearch();
@@ -295,8 +229,8 @@ $("#fiyistack-blog-query-string").on("change keyup input", function (e) {
 function ScrollDownNSearch() {
     let WindowsTopDistance: number = $(window).scrollTop() ?? 0;
     let WindowsBottomDistance: number = ($(window).scrollTop() ?? 0) + ($(window).innerHeight() ?? 0);
-    let CardsFooterTopPosition: number = $("#fiyistack-blog-search-more-button-in-list").offset()?.top ?? 0;
-    let CardsFooterBottomPosition: number = ($("#fiyistack-blog-search-more-button-in-list").offset()?.top ?? 0) + ($("#fiyistack-blog-search-more-button-in-list").outerHeight() ?? 0);
+    let CardsFooterTopPosition: number = $("#canariasblog-blog-search-more-button-in-list").offset()?.top ?? 0;
+    let CardsFooterBottomPosition: number = ($("#canariasblog-blog-search-more-button-in-list").offset()?.top ?? 0) + ($("#canariasblog-blog-search-more-button-in-list").outerHeight() ?? 0);
 
     if (WindowsTopDistance > LastTopDistance) {
         //Scroll down

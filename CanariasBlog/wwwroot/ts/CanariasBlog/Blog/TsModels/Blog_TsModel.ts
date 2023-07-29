@@ -37,18 +37,18 @@ export class BlogModel {
     UserLastModificationIdFantasyName?: string | string[] | number | undefined;
 
     //Queries
-    static Select1ByBlogIdAndIdiom(BlogId: number, Idiom: string) {
-        let URL = "/api/FiyiStack/Blog/1/Select1ByBlogIdAndIdiomToJSON/" + BlogId + "/" + Idiom;
+    static Select1ByBlogIdAndIdiom(BlogId: number) {
+        let URL = "/api/CanariasBlog/Blog/1/Select1ByBlogIdToJSON/" + BlogId;
         return Rx.from(ajax(URL));
     }
 
     static SelectAll() {
-        let URL = "/api/FiyiStack/Blog/1/SelectAllToJSON"
+        let URL = "/api/CanariasBlog/Blog/1/SelectAllToJSON"
         return Rx.from(ajax(URL));
     }
     
     static SelectAllPaged(blogSelectAllPaged: blogSelectAllPaged) {
-        let URL = "/api/FiyiStack/Blog/1/SelectAllPagedToJSON";
+        let URL = "/api/CanariasBlog/Blog/1/SelectAllPagedToJSON";
         let Body = {
             QueryString: blogSelectAllPaged.QueryString,
             ActualPageNumber: blogSelectAllPaged.ActualPageNumber,
@@ -57,7 +57,6 @@ export class BlogModel {
             SortToggler: blogSelectAllPaged.SortToggler,
             RowCount: blogSelectAllPaged.TotalRows,
             TotalPages: blogSelectAllPaged.TotalPages,
-            Idiom: blogSelectAllPaged.Idiom,
             lstBlogModel: blogSelectAllPaged.lstBlogModel
         };
         let Header: any = {
@@ -69,7 +68,7 @@ export class BlogModel {
 
     //Non-Queries
     static DeleteByBlogId(BlogId: number | string | string[] | undefined) {
-        let URL = "/api/FiyiStack/Blog/1/DeleteByBlogId/" + BlogId;
+        let URL = "/api/CanariasBlog/Blog/1/DeleteByBlogId/" + BlogId;
         let Header: any = {
             "Accept": "application/json",
             "Content-Type": "application/json; charset=utf-8"
@@ -78,7 +77,7 @@ export class BlogModel {
     }
 
     static DeleteManyOrAll(DeleteType: string, Body: Ajax) {
-        let URL = "/api/FiyiStack/Blog/1/DeleteManyOrAll/" + DeleteType;
+        let URL = "/api/CanariasBlog/Blog/1/DeleteManyOrAll/" + DeleteType;
         let Header: any = {
             "Accept": "application/json",
             "Content-Type": "application/json; charset=utf-8"
@@ -87,7 +86,7 @@ export class BlogModel {
     }
     
     static CopyByBlogId(BlogId: string | number | string[] | undefined) {
-        let URL = "/api/FiyiStack/Blog/1/CopyByBlogId/" + BlogId;
+        let URL = "/api/CanariasBlog/Blog/1/CopyByBlogId/" + BlogId;
         let Header: any = {
             "Accept": "application/json",
             "Content-Type": "application/json; charset=utf-8"

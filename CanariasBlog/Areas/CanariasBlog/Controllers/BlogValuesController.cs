@@ -49,15 +49,15 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
         }
 
         #region Queries
-        [HttpGet("~/api/FiyiStack/Blog/1/Select1ByBlogIdAndIdiomToJSON/{BlogId:int}/{Idiom}")]
-        public BlogModel Select1ByBlogIdToJSON(int BlogId, string Idiom)
+        [HttpGet("~/api/CanariasBlog/Blog/1/Select1ByBlogIdToJSON/{BlogId:int}")]
+        public BlogModel Select1ByBlogIdToJSON(int BlogId)
         {
             try
             {
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                return _IBlog.Select1ByBlogIdAndIdiomToModel(BlogId, Idiom);
+                return _IBlog.Select1ByBlogIdToModel(BlogId);
             }
             catch (Exception ex) 
             { 
@@ -81,7 +81,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
             }
         }
 
-        [HttpGet("~/api/FiyiStack/Blog/1/SelectAllToJSON")]
+        [HttpGet("~/api/CanariasBlog/Blog/1/SelectAllToJSON")]
         public List<BlogModel> SelectAllToJSON()
         {
             try
@@ -113,7 +113,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
             }
         }
 
-        [HttpPost("~/api/FiyiStack/Blog/1/SelectAllPagedToJSON")]
+        [HttpPost("~/api/CanariasBlog/Blog/1/SelectAllPagedToJSON")]
         public blogSelectAllPaged SelectAllPagedToJSON([FromBody] blogSelectAllPaged blogSelectAllPaged)
         {
             try
@@ -148,7 +148,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
 
         #region Non-Queries
         //[Produces("text/plain")] //For production mode, uncomment this line
-        [HttpPost("~/api/FiyiStack/Blog/1/InsertOrUpdateAsync")]
+        [HttpPost("~/api/CanariasBlog/Blog/1/InsertOrUpdateAsync")]
         public async Task<IActionResult> InsertOrUpdateAsync()
         {
             try
@@ -163,17 +163,18 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
                 
                 #region Pass data from client to server
                 //BlogId
-                int BlogId = Convert.ToInt32(HttpContext.Request.Form["fiyistack-blog-blogid-input"]);
+                int BlogId = Convert.ToInt32(HttpContext.Request.Form["canariasblog-blog-blogid-input"]);
                 
-                string Title = HttpContext.Request.Form["fiyistack-blog-title-input"];
-                string Body = HttpContext.Request.Form["fiyistack-blog-body-input"];
-                string BackgroundImage = HttpContext.Request.Form["fiyistack-blog-backgroundimage-input"];;
+                string Title = HttpContext.Request.Form["canariasblog-blog-title-input"];
+                string Body = HttpContext.Request.Form["canariasblog-blog-body-input"];
+                string Idiom = HttpContext.Request.Form["canariasblog-blog-idiom-input"];
+                string BackgroundImage = HttpContext.Request.Form["canariasblog-blog-backgroundimage-input"];;
                 if (HttpContext.Request.Form.Files.Count != 0)
                 {
-                    BackgroundImage = $@"/Uploads/FiyiStack/Blog/{HttpContext.Request.Form.Files[0].FileName}";
+                    BackgroundImage = $@"/Uploads/CanariasBlog/Blog/{HttpContext.Request.Form.Files[0].FileName}";
                 }
-                int NumberOfLikes = Convert.ToInt32(HttpContext.Request.Form["fiyistack-blog-numberoflikes-input"]);
-                int NumberOfComments = Convert.ToInt32(HttpContext.Request.Form["fiyistack-blog-numberofcomments-input"]);
+                int NumberOfLikes = Convert.ToInt32(HttpContext.Request.Form["canariasblog-blog-numberoflikes-input"]);
+                int NumberOfComments = Convert.ToInt32(HttpContext.Request.Form["canariasblog-blog-numberofcomments-input"]);
                 
                 #endregion
 
@@ -194,8 +195,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
                         Body = Body,
                         BackgroundImage = BackgroundImage,
                         NumberOfLikes = NumberOfLikes,
-                        NumberOfComments = NumberOfComments,
-                        
+                        NumberOfComments = NumberOfComments
                     };
                     
                     NewEnteredId = _IBlog.Insert(BlogModel);
@@ -203,7 +203,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
                 else
                 {
                     //Update
-                    BlogModel BlogModel = new BlogModel(BlogId, "en");
+                    BlogModel BlogModel = new BlogModel(BlogId);
                     
                     BlogModel.UserLastModificationId = UserId;
                     BlogModel.DateTimeLastModification = DateTime.Now;
@@ -227,7 +227,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
                         if (File.Length > 0)
                         {
                             var FileName = HttpContext.Request.Form.Files[i].FileName;
-                            var FilePath = $@"{_WebHostEnvironment.WebRootPath}/Uploads/FiyiStack/Blog/";
+                            var FilePath = $@"{_WebHostEnvironment.WebRootPath}/Uploads/CanariasBlog/Blog/";
 
                             using (var FileStream = new FileStream($@"{FilePath}{FileName}", FileMode.Create))
                             {
@@ -275,7 +275,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
         }
 
         //[Produces("text/plain")] //For production mode, uncomment this line
-        [HttpDelete("~/api/FiyiStack/Blog/1/DeleteByBlogId/{BlogId:int}")]
+        [HttpDelete("~/api/CanariasBlog/Blog/1/DeleteByBlogId/{BlogId:int}")]
         public IActionResult DeleteByBlogId(int BlogId)
         {
             try
@@ -309,7 +309,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
         }
 
         //[Produces("text/plain")] //For production mode, uncomment this line
-        [HttpPost("~/api/FiyiStack/Blog/1/DeleteManyOrAll/{DeleteType}")]
+        [HttpPost("~/api/CanariasBlog/Blog/1/DeleteManyOrAll/{DeleteType}")]
         public IActionResult DeleteManyOrAll([FromBody] Ajax Ajax, string DeleteType)
         {
             try
@@ -344,7 +344,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
         }
 
         //[Produces("text/plain")] //For production mode, uncomment this line
-        [HttpPost("~/api/FiyiStack/Blog/1/CopyByBlogId/{BlogId:int}")]
+        [HttpPost("~/api/CanariasBlog/Blog/1/CopyByBlogId/{BlogId:int}")]
         public IActionResult CopyByBlogId(int BlogId)
         {
             try
@@ -379,7 +379,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
         }
 
         //[Produces("text/plain")] //For production mode, uncomment this line
-        [HttpPost("~/api/FiyiStack/Blog/1/CopyManyOrAll/{CopyType}")]
+        [HttpPost("~/api/CanariasBlog/Blog/1/CopyManyOrAll/{CopyType}")]
         public IActionResult CopyManyOrAll([FromBody] Ajax Ajax, string CopyType)
         {
             try
@@ -423,7 +423,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
 
         #region Other actions
         //[Produces("text/plain")] //For production mode, uncomment this line
-        [HttpPost("~/api/FiyiStack/Blog/1/ExportAsPDF/{ExportationType}")]
+        [HttpPost("~/api/CanariasBlog/Blog/1/ExportAsPDF/{ExportationType}")]
         public IActionResult ExportAsPDF([FromBody] Ajax Ajax, string ExportationType)
         {
             try
@@ -458,7 +458,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
         }
 
         //[Produces("text/plain")] //For production mode, uncomment this line
-        [HttpPost("~/api/FiyiStack/Blog/1/ExportAsExcel/{ExportationType}")]
+        [HttpPost("~/api/CanariasBlog/Blog/1/ExportAsExcel/{ExportationType}")]
         public IActionResult ExportAsExcel([FromBody] Ajax Ajax, string ExportationType)
         {
             try
@@ -493,7 +493,7 @@ namespace CanariasBlog.Areas.FiyiStack.Controllers
         }
 
         //[Produces("text/plain")] //For production mode, uncomment this line
-        [HttpPost("~/api/FiyiStack/Blog/1/ExportAsCSV/{ExportationType}")]
+        [HttpPost("~/api/CanariasBlog/Blog/1/ExportAsCSV/{ExportationType}")]
         public IActionResult ExportAsCSV([FromBody] Ajax Ajax, string ExportationType)
         {
             try

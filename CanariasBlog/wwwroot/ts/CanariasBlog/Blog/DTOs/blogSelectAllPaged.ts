@@ -20,5 +20,4 @@ export class blogSelectAllPaged {
     TotalRows?: number;
     TotalPages?: number;
     lstBlogModel?: BlogModel[] | undefined;
-    Idiom?: string;
 }

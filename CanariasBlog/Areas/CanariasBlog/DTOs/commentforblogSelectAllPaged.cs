@@ -16,7 +16,7 @@ namespace CanariasBlog.Areas.FiyiStack.DTOs
 {
 
     /// <summary>
-    /// Virtual model used for [dbo].[FiyiStack.CommentForBlog.SelectAllPaged] stored procedure
+    /// Virtual model used for [dbo].[CanariasBlog.CommentForBlog.SelectAllPaged] stored procedure
     /// </summary>
     public partial class commentforblogSelectAllPaged
     {

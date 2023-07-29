@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 //Import libraries to use
 var Blog_TsModel_1 = require("../../Blog/TsModels/Blog_TsModel");
 var $ = require("jquery");
-var numeral = require('numeral');
+var timeago_js_1 = require("timeago.js");
 //Set default values
 var LastTopDistance = 0;
 var QueryString = "";
@@ -15,7 +15,6 @@ var TotalPages = 0;
 var TotalRows = 0;
 var ViewToggler = "List";
 var ScrollDownNSearchFlag = false;
-var Idiom = "en";
 var BlogQuery = /** @class */ (function () {
     function BlogQuery() {
     }
@@ -25,7 +24,7 @@ var BlogQuery = /** @class */ (function () {
         var ListContent = "";
         Blog_TsModel_1.BlogModel.SelectAllPaged(request_blogSelectAllPaged).subscribe({
             next: function (newrow) {
-                var _a, _b, _c, _d, _e, _f, _g, _h, _j;
+                var _a, _b, _c, _d, _e, _f, _g, _h;
                 //Only works when there is data available
                 if (newrow.status != 204) {
                     var response_blogQuery = newrow.response;
@@ -37,26 +36,19 @@ var BlogQuery = /** @class */ (function () {
                     SortToggler = (_e = response_blogQuery.SortToggler) !== null && _e !== void 0 ? _e : false;
                     TotalRows = (_f = response_blogQuery.TotalRows) !== null && _f !== void 0 ? _f : 0;
                     TotalPages = (_g = response_blogQuery.TotalPages) !== null && _g !== void 0 ? _g : 0;
-                    Idiom = (_h = response_blogQuery.Idiom) !== null && _h !== void 0 ? _h : "en";
                     //Query string
-                    $("#fiyistack-blog-query-string").attr("placeholder", "Search... (".concat(TotalRows, " posts)"));
+                    $("#canariasblog-blog-query-string").attr("placeholder", "Search... (".concat(TotalRows, " posts)"));
                     //If we are at the final of book disable next and last buttons in pagination
                     if (ActualPageNumber === TotalPages) {
-                        $("#fiyistack-blog-search-more-button-in-list").html("");
+                        $("#canariasblog-blog-search-more-button-in-list").html("");
                     }
                     else {
                         //Scroll arrow for list view
-                        $("#fiyistack-blog-search-more-button-in-list").html("<i class='fas fa-2x fa-chevron-down'></i>");
+                        $("#canariasblog-blog-search-more-button-in-list").html("<i class='fas fa-2x fa-chevron-down'></i>");
                     }
-                    (_j = response_blogQuery === null || response_blogQuery === void 0 ? void 0 : response_blogQuery.lstBlogModel) === null || _j === void 0 ? void 0 : _j.forEach(function (row) {
-                        var _a, _b;
-                        //Read data book
-                        if (Idiom == "en") {
-                            ListContent += "\n<div class=\"card card-blog card-plain blog-horizontal mb-5\">\n    <div class=\"row\">\n        <div class=\"col-lg-4\">\n            <div class=\"card-image\">\n                <a href=\"/en/BlogPost/".concat(row.BlogId, "\">\n                    <img class=\"img rounded\" src=\"").concat(row.BackgroundImage, "\" />\n                </a>\n            </div>\n        </div>\n        <div class=\"col-lg-8\">\n            <div class=\"card-body\">\n                <h3 class=\"card-title\">\n                    <a class=\"text-default\" href=\"/en/BlogPost/").concat(row.BlogId, "\">").concat(row.Title, "</a>\n                </h3>\n                <p class=\"card-description\">\n                    ").concat((_a = row.Body) === null || _a === void 0 ? void 0 : _a.toString().substring(0, 160), " <a class=\"text-default\" href=\"/en/BlogPost/").concat(row.BlogId, "\"> Read More </a>\n                </p>\n                <div class=\"row\">\n                    <div class=\"col-2\">\n                        <img src=\"/img/FiyiStack/Me.jpg\" alt=\"MatiasNovillo\" class=\"avatar img-raised\">\n                    </div>\n                    <div class=\"col-10\">\n                        <div class=\"author\">\n                            <div class=\"text\">\n                                <span class=\"name\">\n                                    Matias Novillo - Full Stack Web Developer\n                                </span>\n                                <div class=\"meta\">\n                                    ").concat(Date.parse(row.DateTimeLastModification), " -\n                                    ").concat(numeral(row.NumberOfLikes).format('0,0.'), " likes -\n                                    ").concat(numeral(row.NumberOfComments).format('0,0.'), " comments\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>");
-                        }
-                        else {
-                            ListContent += "\n<div class=\"card card-blog card-plain blog-horizontal mb-5\">\n    <div class=\"row\">\n        <div class=\"col-lg-4\">\n            <div class=\"card-image\">\n                <a href=\"/es/BlogPost/".concat(row.BlogId, "\">\n                    <img class=\"img rounded\" src=\"").concat(row.BackgroundImage, "\" />\n                </a>\n            </div>\n        </div>\n        <div class=\"col-lg-8\">\n            <div class=\"card-body\">\n                <h3 class=\"card-title\">\n                    <a class=\"text-default\" href=\"/es/BlogPost/").concat(row.BlogId, "\">").concat(row.Title, "</a>\n                </h3>\n                <p class=\"card-description\">\n                    ").concat((_b = row.Body) === null || _b === void 0 ? void 0 : _b.toString().substring(0, 160), " <a class=\"text-default\" href=\"/es/BlogPost/").concat(row.BlogId, "\"> Read More </a>\n                </p>\n                <div class=\"row\">\n                    <div class=\"col-2\">\n                        <img src=\"/img/FiyiStack/Me.jpg\" alt=\"MatiasNovillo\" class=\"avatar img-raised\">\n                    </div>\n                    <div class=\"col-10\">\n                        <div class=\"author\">\n                            <div class=\"text\">\n                                <span class=\"name\">\n                                    Matias Novillo - Full Stack Web Developer\n                                </span>\n                                <div class=\"meta\">\n                                    ").concat(Date.parse(row.DateTimeLastModification), " -\n                                    ").concat(numeral(row.NumberOfLikes).format('0,0.'), " likes -\n                                    ").concat(numeral(row.NumberOfComments).format('0,0.'), " comments\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>");
-                        }
+                    (_h = response_blogQuery === null || response_blogQuery === void 0 ? void 0 : response_blogQuery.lstBlogModel) === null || _h === void 0 ? void 0 : _h.forEach(function (row) {
+                        var _a;
+                        ListContent += "\n<div class=\"card card-blog card-plain blog-horizontal mb-5\">\n    <div class=\"row\">\n        <div class=\"col-lg-4\">\n            <div class=\"card-image\">\n                <a href=\"/BlogPost/".concat(row.BlogId, "\">\n                    <img class=\"img rounded\" src=\"").concat(row.BackgroundImage, "\" />\n                </a>\n            </div>\n        </div>\n        <div class=\"col-lg-8\">\n            <div class=\"card-body\">\n                <h3 class=\"card-title\">\n                    <a class=\"text-default\" href=\"/BlogPost/").concat(row.BlogId, "\">").concat(row.Title, "</a>\n                </h3>\n                <p class=\"card-description\">\n                    ").concat((_a = row.Body) === null || _a === void 0 ? void 0 : _a.toString().substring(0, 160), " <a class=\"text-default\" href=\"/BlogPost/").concat(row.BlogId, "\"> Read More </a>\n                </p>\n                <div class=\"row\">\n                    <div class=\"col-2\">\n                        <img src=\"/img/CanariasBlog/Me.jpg\" alt=\"MatiasNovillo\" class=\"avatar img-raised\">\n                    </div>\n                    <div class=\"col-10\">\n                        <div class=\"author\">\n                            <div class=\"text\">\n                                <span class=\"name\">\n                                    Matias Novillo - Full Stack Web Developer\n                                </span>\n                                <div class=\"meta\">\n                                    ").concat((0, timeago_js_1.format)(Date.parse(row.DateTimeLastModification)), " -\n                                    ").concat(row.NumberOfLikes, " likes -\n                                    ").concat(row.NumberOfComments, " comments\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>");
                     });
                     //If view table is activated, clear table view, if not, clear list view
                     if (ViewToggler === "Table") {
@@ -65,13 +57,13 @@ var BlogQuery = /** @class */ (function () {
                     else {
                         //Used for list view
                         if (ScrollDownNSearchFlag) {
-                            $("#fiyistack-blog-body-list").append(ListContent);
+                            $("#canariasblog-blog-body-list").append(ListContent);
                             ScrollDownNSearchFlag = false;
                         }
                         else {
                             //Clear list view
-                            $("#fiyistack-blog-body-list").html("");
-                            $("#fiyistack-blog-body-list").html(ListContent);
+                            $("#canariasblog-blog-body-list").html("");
+                            $("#canariasblog-blog-body-list").html(ListContent);
                         }
                     }
                 }
@@ -118,7 +110,7 @@ var BlogQuery = /** @class */ (function () {
                         }
                     };
                     //Open connection
-                    xmlHttpRequest.open("POST", "/api/FiyiStack/CommentForBlog/1/PostComment", true);
+                    xmlHttpRequest.open("POST", "/api/CanariasBlog/CommentForBlog/1/PostComment", true);
                     //Send request
                     xmlHttpRequest.send(formData);
                 });
@@ -137,13 +129,11 @@ function ValidateAndSearch() {
         SorterColumn: SorterColumn,
         SortToggler: SortToggler,
         TotalRows: TotalRows,
-        TotalPages: TotalPages,
-        Idiom: Idiom
+        TotalPages: TotalPages
     };
     BlogQuery.SelectAllPagedToHTML(_blogSelectAllPaged);
 }
-//LOAD EVENT
-if ($("#fiyistack-blog-title-page").html().includes("The FiyiStack blog")) {
+if ($("#canariasblog-blog-title-page").html().includes("The CanariasBlog")) {
     //Set to default values
     QueryString = "";
     ActualPageNumber = 1;
@@ -153,29 +143,15 @@ if ($("#fiyistack-blog-title-page").html().includes("The FiyiStack blog")) {
     TotalRows = 0;
     TotalPages = 0;
     ViewToggler = "List";
-    Idiom = "en";
-    ValidateAndSearch();
-}
-if ($("#fiyistack-blog-title-page").html().includes("El blog de FiyiStack")) {
-    //Set to default values
-    QueryString = "";
-    ActualPageNumber = 1;
-    RowsPerPage = 50;
-    SorterColumn = "DateTimeCreation";
-    SortToggler = true;
-    TotalRows = 0;
-    TotalPages = 0;
-    ViewToggler = "List";
-    Idiom = "es";
     ValidateAndSearch();
 }
 //CLICK, SCROLL AND KEYBOARD EVENTS
 //Search button
-$($("#fiyistack-blog-search-button")).on("click", function () {
+$($("#canariasblog-blog-search-button")).on("click", function () {
     ValidateAndSearch();
 });
 //Query string
-$("#fiyistack-blog-query-string").on("change keyup input", function (e) {
+$("#canariasblog-blog-query-string").on("change keyup input", function (e) {
     var _a, _b;
     //If undefined, set QueryString to "" value
     QueryString = (_b = ((_a = $(this).val()) === null || _a === void 0 ? void 0 : _a.toString())) !== null && _b !== void 0 ? _b : "";
@@ -186,8 +162,8 @@ function ScrollDownNSearch() {
     var _a, _b, _c, _d, _e, _f, _g, _h;
     var WindowsTopDistance = (_a = $(window).scrollTop()) !== null && _a !== void 0 ? _a : 0;
     var WindowsBottomDistance = ((_b = $(window).scrollTop()) !== null && _b !== void 0 ? _b : 0) + ((_c = $(window).innerHeight()) !== null && _c !== void 0 ? _c : 0);
-    var CardsFooterTopPosition = (_e = (_d = $("#fiyistack-blog-search-more-button-in-list").offset()) === null || _d === void 0 ? void 0 : _d.top) !== null && _e !== void 0 ? _e : 0;
-    var CardsFooterBottomPosition = ((_g = (_f = $("#fiyistack-blog-search-more-button-in-list").offset()) === null || _f === void 0 ? void 0 : _f.top) !== null && _g !== void 0 ? _g : 0) + ((_h = $("#fiyistack-blog-search-more-button-in-list").outerHeight()) !== null && _h !== void 0 ? _h : 0);
+    var CardsFooterTopPosition = (_e = (_d = $("#canariasblog-blog-search-more-button-in-list").offset()) === null || _d === void 0 ? void 0 : _d.top) !== null && _e !== void 0 ? _e : 0;
+    var CardsFooterBottomPosition = ((_g = (_f = $("#canariasblog-blog-search-more-button-in-list").offset()) === null || _f === void 0 ? void 0 : _f.top) !== null && _g !== void 0 ? _g : 0) + ((_h = $("#canariasblog-blog-search-more-button-in-list").outerHeight()) !== null && _h !== void 0 ? _h : 0);
     if (WindowsTopDistance > LastTopDistance) {
         //Scroll down
         if ((WindowsBottomDistance > CardsFooterTopPosition) && (WindowsTopDistance < CardsFooterBottomPosition)) {

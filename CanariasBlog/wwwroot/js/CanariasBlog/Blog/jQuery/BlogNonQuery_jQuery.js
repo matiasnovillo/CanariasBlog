@@ -31,7 +31,7 @@ let fiyistackblogbodytoolbaroptions = [
     ["image", "video"],
     ["clean"]                                         // remove formatting button
 ];
-let fiyistackblogbodyquill = new Quill("#fiyistack-blog-body-input", {
+let fiyistackblogbodyquill = new Quill("#canariasblog-blog-body-input", {
     modules: {
         toolbar: fiyistackblogbodytoolbaroptions
     },
@@ -42,17 +42,17 @@ let fiyistackblogbodyquill = new Quill("#fiyistack-blog-body-input", {
 //Used for file input
 let fiyistackblogbackgroundimageinput;
 let fiyistackblogbackgroundimageboolfileadded;
-$("#fiyistack-blog-backgroundimage-input").on("change", function (e) {
+$("#canariasblog-blog-backgroundimage-input").on("change", function (e) {
     fiyistackblogbackgroundimageinput = $(this).get(0).files;
     fiyistackblogbackgroundimageboolfileadded = true;
-    formData.append("fiyistack-blog-backgroundimage-input", fiyistackblogbackgroundimageinput[0], fiyistackblogbackgroundimageinput[0].name);
+    formData.append("canariasblog-blog-backgroundimage-input", fiyistackblogbackgroundimageinput[0], fiyistackblogbackgroundimageinput[0].name);
 });
 
 
 
 //LOAD EVENT
 $(document).ready(function () {
-    fiyistackblogbodyquill.root.innerHTML = $("#fiyistack-blog-body-hidden-value").val();
+    fiyistackblogbodyquill.root.innerHTML = $("#canariasblog-blog-body-hidden-value").val();
     
     
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -67,15 +67,15 @@ $(document).ready(function () {
             if (form.checkValidity() === true) {
                 
                 //BlogId
-                formData.append("fiyistack-blog-blogid-input", $("#fiyistack-blog-blogid-input").val());
+                formData.append("canariasblog-blog-blogid-input", $("#canariasblog-blog-blogid-input").val());
 
-                formData.append("fiyistack-blog-title-input", $("#fiyistack-blog-title-input").val());
-                formData.append("fiyistack-blog-body-input", fiyistackblogbodyquill.root.innerHTML);
+                formData.append("canariasblog-blog-title-input", $("#canariasblog-blog-title-input").val());
+                formData.append("canariasblog-blog-body-input", fiyistackblogbodyquill.root.innerHTML);
                 if (!fiyistackblogbackgroundimageboolfileadded) {
-                    formData.append("fiyistack-blog-backgroundimage-input", $("#fiyistack-blog-backgroundimage-readonly").val());
+                    formData.append("canariasblog-blog-backgroundimage-input", $("#canariasblog-blog-backgroundimage-readonly").val());
                 }
-                formData.append("fiyistack-blog-numberoflikes-input", $("#fiyistack-blog-numberoflikes-input").val());
-                formData.append("fiyistack-blog-numberofcomments-input", $("#fiyistack-blog-numberofcomments-input").val());
+                formData.append("canariasblog-blog-numberoflikes-input", $("#canariasblog-blog-numberoflikes-input").val());
+                formData.append("canariasblog-blog-numberofcomments-input", $("#canariasblog-blog-numberofcomments-input").val());
                 
 
                 //Setup request
@@ -93,11 +93,11 @@ $(document).ready(function () {
                     }
                     else {
                         //SUCCESS
-                        window.location.replace("/FiyiStack/BlogQueryPage");
+                        window.location.replace("/CanariasBlog/BlogQueryPage");
                     }
                 };
                 //Open connection
-                xmlHttpRequest.open("POST", "/api/FiyiStack/Blog/1/InsertOrUpdateAsync", true);
+                xmlHttpRequest.open("POST", "/api/CanariasBlog/Blog/1/InsertOrUpdateAsync", true);
                 //Send request
                 xmlHttpRequest.send(formData);
             }
